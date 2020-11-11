@@ -3,12 +3,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -62,14 +60,6 @@ public class welcome extends Application {
         sci.setStyle("-fx-background-color: #cceb8b;");
         sports.setStyle("-fx-background-color: #cceb8b;");
         comedy.setStyle("-fx-background-color: #cceb8b;");
-
-//        sports.setOnMouseClicked(e ->
-//        {
-//            MainActivity.mainStage.setScene(new LeaderBoardScene());
-//            MainActivity.userName = username.getText();
-//            leader.setTextFill(Color.GREEN);
-//            player.stop();
-//        });
 
         borderPane.setTop(hBox);
         borderPane.setLeft(mName);
