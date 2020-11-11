@@ -8,8 +8,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class sportsPane HBox{
-    public comedyPane(){
+public class sportsPane extends HBox{
+    public sportsPane(){
         VBox vBox = new VBox();
 
         GridPane gridPane = new GridPane();
@@ -69,7 +69,7 @@ public class sportsPane HBox{
 
 
         VBox vBoxTable = new VBox();
-        Label tableHead = new Label("Comedy");
+        Label tableHead = new Label("Sports-Centric");
         tableHead.setFont(Font.font(27));
 
 
