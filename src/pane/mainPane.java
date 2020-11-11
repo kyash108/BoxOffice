@@ -1,28 +1,36 @@
-import javafx.application.Application;
+package pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
+import main.welcome;
+import scene.comedyScene;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
-public class welcome extends Application {
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        BorderPane borderPane = new BorderPane();
+public class mainPane extends BorderPane {
+    public mainPane(){
+
+//        BorderPane borderPane = new BorderPane();
+
         Font font1=Font.font("Times", FontWeight.BOLD,
                 FontPosture.ITALIC,30);
         Font font2=Font.font("Times", FontWeight.BOLD,
                 FontPosture.ITALIC,20);
-        Image image = new Image(new FileInputStream("src/name.png"));
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream("src/name.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(80);
         imageView.setFitWidth(200);
@@ -50,6 +58,7 @@ public class welcome extends Application {
         sci.setMinWidth(150);
         sports.setMinWidth(150);
 
+        comedy.setOnAction(e-> welcome.stage.setScene(new comedyScene()));
 
         HBox buttons= new HBox();
         buttons.getChildren().addAll(sports,comedy,sci);
@@ -61,17 +70,12 @@ public class welcome extends Application {
         sports.setStyle("-fx-background-color: #cceb8b;");
         comedy.setStyle("-fx-background-color: #cceb8b;");
 
-        borderPane.setTop(hBox);
-        borderPane.setLeft(mName);
-        borderPane.setRight(pName);
-        borderPane.setBottom(buttons);
-        borderPane.setCenter(genre);
-        borderPane.setStyle("-fx-background-color: #97d076;");
+        this.setTop(hBox);
+        this.setLeft(mName);
+        this.setRight(pName);
+        this.setBottom(buttons);
+        this.setCenter(genre);
+        this.setStyle("-fx-background-color: #97d076;");
 
-        Scene scene = new Scene(borderPane, 700, 300);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Box Office");
-        primaryStage.setResizable(false);
-        primaryStage.show();
     }
 }
