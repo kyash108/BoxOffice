@@ -12,6 +12,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import main.welcome;
 import scene.comedyScene;
+import scene.sciScene;
 import scene.sportsScene;
 
 import java.io.FileInputStream;
@@ -61,6 +62,7 @@ public class mainPane extends BorderPane {
 
         comedy.setOnAction(e-> welcome.stage.setScene(new comedyScene()));
         sports.setOnAction(e-> welcome.stage.setScene(new sportsScene()));
+        sci.setOnAction(e-> welcome.stage.setScene(new sciScene()));
 
         HBox buttons= new HBox();
         buttons.getChildren().addAll(sports,comedy,sci);
