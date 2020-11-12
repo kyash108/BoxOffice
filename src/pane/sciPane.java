@@ -3,10 +3,17 @@ package pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import main.welcome;
+import scene.mainScene;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class sciPane extends HBox {
     public sciPane(){
@@ -16,7 +23,23 @@ public class sciPane extends HBox {
 
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        gridPane.setPadding(new Insets(25,25,25,25));
+        gridPane.setPadding(new Insets(0,25,25,25));
+
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream("src/images/backArrow.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ImageView backImageView = new ImageView(image);
+        backImageView.setFitWidth(30);
+        backImageView.setFitHeight(30);
+
+        Button backButton = new Button("",backImageView);
+        backButton.setStyle("-fx-background-color: #97d076;");
+        backButton.setMaxHeight(30);
+        backButton.setMaxWidth(30);
+        backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
 
         Label idInput = new Label("Id");
         gridPane.add(idInput,0,1);
@@ -65,7 +88,7 @@ public class sciPane extends HBox {
         hboxForButton.getChildren().addAll(insert,delete,update);
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
-        vBox.getChildren().addAll(gridPane,hboxForButton);
+        vBox.getChildren().addAll(backButton,gridPane,hboxForButton);
 
 
         VBox vBoxTable = new VBox();
