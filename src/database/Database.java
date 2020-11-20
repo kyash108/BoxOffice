@@ -7,23 +7,25 @@ public class Database {
     private Connection connection = null;
 
     //
-    private Database(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca"+Login.DB_NAME+"?useSSL=false",
-                    Login.DB_USER, Login.DB_PASSWORD);
-            System.out.println("connection created");
+    private Database() {
+        if (connection == null) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/" + Login.DB_NAME + "?serverTimezone=UTC",
+                        Login.DB_USER, Login.DB_PASSWORD);
+                System.out.println("connection created");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        // database
-        try {
-            createTable(DBConst.TABLE_COMEDY,DBConst.CREATE_TABLE_COMEDY,connection);
-            createTable(DBConst.TABLE_SCI,DBConst.CREATE_TABLE_SCIFI,connection);
-            createTable(DBConst.TABLE_SPORTS,DBConst.CREATE_TABLE_SPORTS,connection);
-        }catch (Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // database
+            try {
+                createTable(DBConst.TABLE_COMEDY, DBConst.CREATE_TABLE_COMEDY, connection);
+                createTable(DBConst.TABLE_SCI, DBConst.CREATE_TABLE_SCIFI, connection);
+                createTable(DBConst.TABLE_SPORTS, DBConst.CREATE_TABLE_SPORTS, connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     public static Database getInstance(){
@@ -33,18 +35,6 @@ public class Database {
         return instance;
     }
 
-    public Connection getConnection(){
-        return connection;
-    }
-    public void close(){
-        System.out.println("Closing Application");
-        try {
-            connection.close();
-        }catch (SQLException e){
-            connection = null;
-            e.printStackTrace();
-        }
-    }
 
     public void createTable(String tableName, String tableQuery, Connection connection) throws SQLException {
         Statement createComedyTable;
@@ -57,7 +47,9 @@ public class Database {
             createComedyTable.execute(tableQuery);
             System.out.println(" The " + tableName + " table has been inserted");
         }
-
+    }
+    public Connection getConnection(){
+        return connection;
     }
 }
 

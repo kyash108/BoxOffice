@@ -31,35 +31,36 @@ public class DBConst {
     //CRUD
 
     // Create table
+
     public static final String CREATE_TABLE_COMEDY =
-            " CREATE TABLE " + TABLE_COMEDY + "(" +
-                    COMEDY_COLUMN_ID + "int NOT NULL AUTO_INCREMENT, "+
-                    COMEDY_COLUMN_TITLE + "VARCHAR(50), "+
-                    COMEDY_COLUMN_RDATE + "DATE,"+
-                    COMEDY_COLUMN_DIRECTOR + "VARCHAR(70), "+
-                    COMEDY_COLUMN_BUDGET + "VARCHAR(40) ,"+
-                    "PRIMARY KEY("+COMEDY_COLUMN_ID+")"+
-                    ")";
+            "CREATE TABLE " + TABLE_COMEDY + "(" +
+                    COMEDY_COLUMN_ID + " int not null auto_increment, " +
+                    COMEDY_COLUMN_TITLE + " varchar(50), "+
+                    COMEDY_COLUMN_RDATE + " date,"+
+                    COMEDY_COLUMN_DIRECTOR + " varchar(70), "+
+                    COMEDY_COLUMN_BUDGET + " varchar(40) ,"+
+                    "PRIMARY KEY(" +COMEDY_COLUMN_ID +"))";
+
 
     public static final String CREATE_TABLE_SPORTS =
-            " CREATE TABLE " + TABLE_SPORTS + "(" +
-                    SPORTS_COLUMN_ID + "int NOT NULL AUTO_INCREMENT, "+
-                    SPORTS_COLUMN_TITLE + "VARCHAR(50), "+
-                    SPORTS_COLUMN_RDATE + "DATE,"+
-                    SPORTS_COLUMN_DIRECTOR + "VARCHAR(70), "+
-                    SPORTS_COLUMN_BUDGET + "VARCHAR(40) ,"+
-                    "PRIMARY KEY("+SPORTS_COLUMN_ID+")"+
-                    ")";
+            "CREATE TABLE " + TABLE_SPORTS + "(" +
+                    SPORTS_COLUMN_ID + " int not null auto_increment, " +
+                    SPORTS_COLUMN_TITLE + " varchar(50), "+
+                    SPORTS_COLUMN_RDATE + " date,"+
+                    SPORTS_COLUMN_DIRECTOR + " varchar(70), "+
+                    SPORTS_COLUMN_BUDGET + " varchar(40) ,"+
+                    "PRIMARY KEY(" +SPORTS_COLUMN_ID +"))";
 
     public static final String CREATE_TABLE_SCIFI =
-            " CREATE TABLE " + TABLE_SCI + "(" +
-                    SCI_COLUMN_ID + "int NOT NULL AUTO_INCREMENT, "+
-                    SCI_COLUMN_TITLE + "VARCHAR(50), "+
-                    SCI_COLUMN_RDATE + "DATE,"+
-                    SCI_COLUMN_DIRECTOR + "VARCHAR(70), "+
-                    SCI_COLUMN_BUDGET + "VARCHAR(40) ,"+
-                    "PRIMARY KEY("+SCI_COLUMN_ID+")"+
-                    ")";
+            "CREATE TABLE " + TABLE_SCI + "(" +
+                    SCI_COLUMN_ID + " int not null auto_increment, " +
+                    SCI_COLUMN_TITLE + " varchar(50), "+
+                    SCI_COLUMN_RDATE + " date,"+
+                    SCI_COLUMN_DIRECTOR + " varchar(70), "+
+                    SCI_COLUMN_BUDGET + " varchar(40) ,"+
+                    "PRIMARY KEY(" +SCI_COLUMN_ID +"))";
+
+
 
     //Delete statements for tables
 
@@ -76,44 +77,4 @@ public class DBConst {
                     "WHERE " + SPORTS_COLUMN_ID ;
 
 
-
-    // update statements for tables
-
-    public static final String UPDATE_SCI =
-            "UPDATE "+TABLE_SCI+ " SET " +
-                    SCI_COLUMN_TITLE + " " + SCI_COLUMN_DIRECTOR + " " + SCI_COLUMN_RDATE +
-                    " " + SCI_COLUMN_BUDGET + " " + " WHERE " + SCI_COLUMN_ID + " ";
-
-    public static final String UPDATE_COMEDY =
-            "UPDATE "+ TABLE_COMEDY+ " SET "+
-                    COMEDY_COLUMN_TITLE + " " + COMEDY_COLUMN_DIRECTOR + " " + COMEDY_COLUMN_RDATE +
-                    " " + COMEDY_COLUMN_BUDGET + " " + " WHERE " + SCI_COLUMN_ID + " ";
-
-    public static final String UPDATE_SPORTS =
-            "UPDATE "+ TABLE_SPORTS+ " SET "+
-                    SPORTS_COLUMN_TITLE + " , " + SPORTS_COLUMN_DIRECTOR + " , " + SPORTS_COLUMN_RDATE +
-                    " , " + SPORTS_COLUMN_BUDGET + " , " + " WHERE " + SPORTS_COLUMN_ID + " ";
-
-
-    // insert statements for tables
-    public static final String INSERT_SCI =
-            "INSERT INTO " + TABLE_SCI + "(" +
-                    SCI_COLUMN_TITLE + "," + SCI_COLUMN_DIRECTOR + "," + SCI_COLUMN_RDATE+
-                    ","+SCI_COLUMN_BUDGET+") VALUES ()"
-                    //"('"+")" yet to get values from the user
-     ;
-
-    public static final String INSERT_COMDEY =
-            "INSERT INTO " + TABLE_COMEDY + "(" +
-                    COMEDY_COLUMN_TITLE + "," + COMEDY_COLUMN_DIRECTOR + "," + COMEDY_COLUMN_RDATE+
-                    ","+COMEDY_COLUMN_BUDGET+") VALUES ()"
-            //"('"+")" yet to get values from the user
-            ;
-
-    public static final String INSERT_SPORTS =
-            "INSERT INTO " + TABLE_SPORTS + "(" +
-                    SPORTS_COLUMN_TITLE + "," + SPORTS_COLUMN_DIRECTOR + "," + SPORTS_COLUMN_RDATE+
-                    ","+SPORTS_COLUMN_BUDGET+") VALUES ()"
-            //"('"+")" yet to get values from the user
-            ;
 }

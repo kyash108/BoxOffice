@@ -1,5 +1,6 @@
 package pane;
 
+import database.Database;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -76,6 +77,8 @@ public class comedyPane extends HBox {
 
     HBox hboxForButton = new HBox();
     Button insert = new Button("INSERT");
+
+
         insert.setOnAction(e-> insert());
         insert.setStyle("-fx-background-color: #cceb8b;");
     Button delete = new Button("DELETE");
@@ -94,7 +97,6 @@ public class comedyPane extends HBox {
     VBox vBoxTable = new VBox();
     Label tableHead = new Label("Comedy");
         tableHead.setFont(Font.font(27));
-
 
 
     TableView<String> tableView = new TableView<String>();
@@ -126,4 +128,8 @@ public class comedyPane extends HBox {
     public void insert(){
 
     }
+
+    //database connection
+
+    Database db = Database.getInstance();
 }
