@@ -76,5 +76,44 @@ public class DBConst {
             "DELETE FROM " + TABLE_SPORTS +
                     "WHERE " + SPORTS_COLUMN_ID ;
 
+    // update statements for tables
+
+    public static final String UPDATE_SCI =
+            "UPDATE "+TABLE_SCI+ " SET " +
+                    SCI_COLUMN_TITLE + " " + SCI_COLUMN_DIRECTOR + " " + SCI_COLUMN_RDATE +
+                    " " + SCI_COLUMN_BUDGET + " " + " WHERE " + SCI_COLUMN_ID + " ";
+
+    public static final String UPDATE_COMEDY =
+            "UPDATE "+ TABLE_COMEDY+ " SET "+
+                    COMEDY_COLUMN_TITLE + " " + COMEDY_COLUMN_DIRECTOR + " " + COMEDY_COLUMN_RDATE +
+                    " " + COMEDY_COLUMN_BUDGET + " " + " WHERE " + SCI_COLUMN_ID + " ";
+
+    public static final String UPDATE_SPORTS =
+            "UPDATE "+ TABLE_SPORTS+ " SET "+
+                    SPORTS_COLUMN_TITLE + " , " + SPORTS_COLUMN_DIRECTOR + " , " + SPORTS_COLUMN_RDATE +
+                    " , " + SPORTS_COLUMN_BUDGET + " , " + " WHERE " + SPORTS_COLUMN_ID + " ";
+
+
+    // insert statements for tables
+    public static final String INSERT_SCI =
+            "INSERT INTO " + TABLE_SCI + "(" +
+                    SCI_COLUMN_TITLE + "," + SCI_COLUMN_DIRECTOR + "," + SCI_COLUMN_RDATE+
+                    ","+SCI_COLUMN_BUDGET+") VALUES ()"
+            //"('"+")" yet to get values from the user
+            ;
+
+    public static final String INSERT_COMEDY =
+            "INSERT INTO " + TABLE_COMEDY + "(" +
+                    COMEDY_COLUMN_TITLE + "," + COMEDY_COLUMN_DIRECTOR + "," + COMEDY_COLUMN_RDATE+
+                    ","+COMEDY_COLUMN_BUDGET+") VALUES ()"
+            //"('"+")" yet to get values from the user
+            ;
+
+    public static final String INSERT_SPORTS =
+            "INSERT INTO " + TABLE_SPORTS + "(" +
+                    SPORTS_COLUMN_TITLE + "," + SPORTS_COLUMN_DIRECTOR + "," + SPORTS_COLUMN_RDATE+
+                    ","+SPORTS_COLUMN_BUDGET+") VALUES ()"
+            //"('"+")" yet to get values from the user
+            ;
 
 }
