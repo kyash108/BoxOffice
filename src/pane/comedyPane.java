@@ -11,10 +11,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import main.welcome;
+import pojo.Comedy;
 import scene.mainScene;
 
+import javax.xml.crypto.Data;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
 
 public class comedyPane extends HBox {
     public comedyPane(){
@@ -79,7 +82,12 @@ public class comedyPane extends HBox {
     Button insert = new Button("INSERT");
 
 
-        insert.setOnAction(e-> insert());
+        insert.setOnAction(e-> {
+            Comedy comedy = new Comedy(
+             inputTitle.getText(),inputDirector.getText(),
+                    inputBudget.getText(),inputReleaseDate.getText());
+        });
+
         insert.setStyle("-fx-background-color: #cceb8b;");
     Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
@@ -128,8 +136,8 @@ public class comedyPane extends HBox {
     public void insert(){
 
     }
-
+    Database db = Database.getInstance();
     //database connection
 
-    Database db = Database.getInstance();
+
 }

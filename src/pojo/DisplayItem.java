@@ -1,22 +1,18 @@
 package pojo;
 
-public class Comedy {
+public class DisplayItem {
     private int id;
     private String title;
     private String director;
-    private String Rdate;
-    private String Budget;
+    private String rDate;
+    private String budget;
 
-    public Comedy( String title, String director, String rdate, String budget) {
-
+    public DisplayItem(int id, String title, String director, String rDate, String budget) {
+        this.id = id;
         this.title = title;
         this.director = director;
-        Rdate = rdate;
-        Budget = budget;
-    }
-
-    public Comedy(int id) {
-        this.id = id;
+        this.rDate = rDate;
+        this.budget = budget;
     }
 
     public int getId() {
@@ -43,19 +39,19 @@ public class Comedy {
         this.director = director;
     }
 
-    public String getRdate() {
-        return Rdate;
+    public String getrDate() {
+        return rDate;
     }
 
-    public void setRdate(String rdate) {
-        Rdate = rdate;
+    public void setrDate(String rDate) {
+        this.rDate = rDate;
     }
 
     public String getBudget() {
-        return Budget;
+        return budget;
     }
 
     public void setBudget(String budget) {
-        Budget = budget;
+        this.budget = budget;
     }
 }

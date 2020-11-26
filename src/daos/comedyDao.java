@@ -9,5 +9,9 @@ public interface comedyDao{
     public Comedy getComedy(int id);
     public void updateItem(Comedy comedy);
     public void deleteItem(int id);
-    public void createItem(Comedy comedy);
+
+    void createItem(Comedy comedy);
+
+    //    public void createItem(Comedy comedy);
+    public void insertItem(Comedy comedy);
 }
