@@ -4,7 +4,6 @@ import daos.comedyDao;
 import database.DBConst;
 import database.Database;
 import pojo.Comedy;
-import pojo.DisplayItem;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
