@@ -4,8 +4,8 @@ import daos.comedyDao;
 import database.DBConst;
 import database.Database;
 import pojo.Comedy;
+import pojo.DisplayItem;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class comedyTable implements comedyDao {
 
-    Database db = Database.getInstance();
+    static Database db = Database.getInstance();
     ArrayList<Comedy> comedys;
 
 
@@ -26,16 +26,16 @@ public class comedyTable implements comedyDao {
                     db.getConnection().createStatement();
             ResultSet data = getComedys.executeQuery(query);
 
-        while (data.next()){
-            comedys.add(
-                    new Comedy(
-//                            data.getInt(DBConst.COMEDY_COLUMN_ID),
-                            data.getString(DBConst.COMEDY_COLUMN_TITLE),
-                            data.getString(DBConst.COMEDY_COLUMN_DIRECTOR),
-                            data.getString(DBConst.COMEDY_COLUMN_RDATE),
-                            data.getString(DBConst.COMEDY_COLUMN_BUDGET)));
+            while (data.next()){
+                comedys.add(
+                        new Comedy(
+                                data.getInt(DBConst.COMEDY_COLUMN_ID),
+                                data.getString(DBConst.COMEDY_COLUMN_TITLE),
+                                data.getString(DBConst.COMEDY_COLUMN_DIRECTOR),
+                                data.getInt(DBConst.COMEDY_COLUMN_RDATE),
+                                data.getInt(DBConst.COMEDY_COLUMN_BUDGET)));
 
-        }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,8 +44,8 @@ public class comedyTable implements comedyDao {
     }
 
     @Override
-    public Comedy getComedy(int id) {
-        String query = "SELECT * FROM "+ DBConst.COMEDY_COLUMN_ID+ " WHERE " + DBConst.COMEDY_COLUMN_ID+ " = " + id;
+    public Comedy getComedy(String title) {
+        String query = "SELECT * FROM "+ DBConst.COMEDY_COLUMN_TITLE+ " WHERE " + DBConst.COMEDY_COLUMN_TITLE+ " = " + title;
 
         try{
             Statement getComedy =
@@ -54,11 +54,11 @@ public class comedyTable implements comedyDao {
             if(data.next()){
                 Comedy comedys =
                         new Comedy(
-//                                data.getInt(DBConst.COMEDY_COLUMN_ID),
+                                data.getInt(DBConst.COMEDY_COLUMN_ID),
                                 data.getString(DBConst.COMEDY_COLUMN_TITLE),
                                 data.getString(DBConst.COMEDY_COLUMN_DIRECTOR),
-                                data.getString(DBConst.COMEDY_COLUMN_BUDGET),
-                                data.getString(DBConst.COMEDY_COLUMN_RDATE));
+                                data.getInt(DBConst.COMEDY_COLUMN_BUDGET),
+                                data.getInt(DBConst.COMEDY_COLUMN_RDATE));
                 return comedys;
             }
         }catch (SQLException e) {
@@ -118,33 +118,28 @@ public class comedyTable implements comedyDao {
         }
     }
 
-    @Override
-    public void insertItem(Comedy comedy) {
-        String query = "INSERT INTO " + DBConst.TABLE_COMEDY + "(" +
-                        DBConst.COMEDY_COLUMN_TITLE + "," + DBConst.COMEDY_COLUMN_DIRECTOR + "," + DBConst.COMEDY_COLUMN_RDATE+
-                        ","+DBConst.COMEDY_COLUMN_BUDGET+") VALUES ('" +
-                comedy.getTitle() + "','" + comedy.getDirector() + "','" +
-                comedy.getBudget() + "','" + comedy.getRdate() +
-                "')";
-    }
-
-    public int getItemCount(Comedy comedy) {
-        int count = -1;
-        try {
-            PreparedStatement getCount = db.getConnection()
-                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_COMEDY + " WHERE "
-                                    + DBConst.COMEDY_COLUMN_TITLE + " = '" + comedy + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
-                            ResultSet.CONCUR_UPDATABLE);
-            ResultSet data = getCount.executeQuery();
-            data.last();
-            count = data.getRow();
-        }
-        catch(SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
+//    public static ArrayList<DisplayItem> getPrettyItems(){
+//        ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
+//        String query = "SELECT comedy.id, comedy.title AS comedy_title," +
+//                "comedy.director as comedy_director," +
+//                "comedy.rDate as comedy_rDate," +
+//                "comedy.budget as comedy_budget,";
+//        try {
+//            Statement getItems = db.getConnection().createStatement();
+//            ResultSet data = getItems.executeQuery(query);
+//            while(data.next()) {
+//                items.add(new DisplayItem(data.getInt("id"),
+//                        data.getString("comedy_title"),
+//                        data.getString("comedy_director"),
+//                        data.getString("comedy_rDate"),
+//                        data.getString("comedy_budget")));
+//            }
+//        } catch (SQLException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        return items;
+//    }
 
 }
 
