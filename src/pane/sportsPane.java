@@ -1,5 +1,4 @@
 package pane;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,12 +16,12 @@ import pojo.DisplayItem;
 import scene.chartScene;
 import scene.mainScene;
 import scene.sportsScene;
-import tables.comedyTable;
 import tables.sportsTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class sportsPane extends HBox {
+
     public sportsPane(){
         VBox vBox = new VBox();
 
@@ -91,15 +90,21 @@ public class sportsPane extends HBox {
             welcome.stage.setScene(new sportsScene());
         });
 
-        insert.setStyle("-fx-background-color: #cceb8b;");
-        Button delete = new Button("DELETE");
-        delete.setStyle("-fx-background-color: #cceb8b;");
+
+
+//        Button removeButton = new Button("Remove");
+//        removeButton.setOnAction(e->{
+//            DisplayItem item = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
+//            itemTable.deleteItem(item.getId());
+//            refreshTable();
+//            StatsTab.getInstance().generateChart();
+//        });
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
         chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
 
-        hboxForButton.getChildren().addAll(insert,delete,chart);
+
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(backButton,gridPane,hboxForButton);
@@ -157,8 +162,19 @@ public class sportsPane extends HBox {
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);
 
-        this.getChildren().addAll(vBox,vBoxTable);
+        insert.setStyle("-fx-background-color: #cceb8b;");
+        Button delete = new Button("DELETE");
+        delete.setStyle("-fx-background-color: #cceb8b;");
 
+        delete.setOnAction(e->{
+            DisplayItem sports = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
+            sportsTable.deleteItem(sports.getId());
+            welcome.stage.setScene(new sportsScene());
+
+        });
+        hboxForButton.getChildren().addAll(insert,delete,chart);
+
+        this.getChildren().addAll(vBox,vBoxTable);
         this.setStyle("-fx-background-color: #97d076;");
     }
 }

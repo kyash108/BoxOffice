@@ -1,4 +1,5 @@
 package pane;
+import database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -12,9 +13,14 @@ import scene.mainScene;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class chartPane extends VBox {
-    public chartPane(){
+
+    public chartPane()  {
+
         VBox vBox = new VBox();
 
         Image image = null;
@@ -47,4 +53,5 @@ public class chartPane extends VBox {
 
         this.setStyle("-fx-background-color: #97d076;");
     }
+
 }

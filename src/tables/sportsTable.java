@@ -14,17 +14,29 @@ public class sportsTable implements sportsDao {
     static Database db = Database.getInstance();
     ArrayList<Sports> sport;
 
+    public static void deleteItem(String id) {
+        String query = "DELETE FROM " + DBConst.TABLE_SPORTS + " WHERE " +
+                DBConst.SPORTS_COLUMN_ID + " = " + id;
+        try {
+            db.getConnection().createStatement().execute(query);
+            System.out.println("Deleted record");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public ArrayList<Sports> getSports() {
-        String query = "SELECT * FROM "+ DBConst.TABLE_SPORTS;
+        String query = "SELECT * FROM " + DBConst.TABLE_SPORTS;
         sport = new ArrayList<>();
         try {
             Statement getsport =
                     db.getConnection().createStatement();
             ResultSet data = getsport.executeQuery(query);
 
-            while (data.next()){
+            while (data.next()) {
                 sport.add(
                         new Sports(
                                 data.getInt(DBConst.SPORTS_COLUMN_ID),
@@ -43,13 +55,13 @@ public class sportsTable implements sportsDao {
 
     @Override
     public Sports getSports(String title) {
-        String query = "SELECT * FROM "+ DBConst.SPORTS_COLUMN_TITLE+ " WHERE " + DBConst.SPORTS_COLUMN_TITLE+ " = " + title;
+        String query = "SELECT * FROM " + DBConst.SPORTS_COLUMN_TITLE + " WHERE " + DBConst.SPORTS_COLUMN_TITLE + " = " + title;
 
-        try{
+        try {
             Statement getSports =
                     db.getConnection().createStatement();
             ResultSet data = getSports.executeQuery(query);
-            if(data.next()){
+            if (data.next()) {
                 Sports sport =
                         new Sports(
                                 data.getInt(DBConst.SPORTS_COLUMN_ID),
@@ -59,7 +71,7 @@ public class sportsTable implements sportsDao {
                                 data.getString(DBConst.SPORTS_COLUMN_RDATE));
                 return sport;
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -68,7 +80,7 @@ public class sportsTable implements sportsDao {
 
     @Override
     public void deleteItem(int id) {
-        String query  = "DELETE FROM " + DBConst.TABLE_SPORTS + " WHERE " +
+        String query = "DELETE FROM " + DBConst.TABLE_SPORTS + " WHERE " +
                 DBConst.SPORTS_COLUMN_ID + " = " + id;
         try {
             db.getConnection().createStatement().execute(query);
@@ -98,14 +110,14 @@ public class sportsTable implements sportsDao {
         }
     }
 
-    public static ArrayList<DisplayItem> getPrettyItems(){
+    public static ArrayList<DisplayItem> getPrettyItems() {
         ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
         String query = "SELECT * from sports";
 
         try {
             Statement getItems = db.getConnection().createStatement();
             ResultSet data = getItems.executeQuery(query);
-            while(data.next()) {
+            while (data.next()) {
                 items.add(new DisplayItem(data.getString("id"),
                         data.getString("title"),
                         data.getString("director"),
@@ -119,5 +131,19 @@ public class sportsTable implements sportsDao {
         return items;
     }
 
+    public int num() throws Exception {
+        try {
+            // Statements allow to issue SQL queries to the database
+            Statement getCount = db.getConnection().createStatement();
+            ResultSet resultSet = getCount.executeQuery("SELECT * from sports");
+            int count = 0;
+            while (resultSet.next()) {
+                count++;
+            }
+            return count;
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 }
 
