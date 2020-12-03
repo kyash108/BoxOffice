@@ -12,7 +12,6 @@ import javafx.scene.text.Font;
 import main.welcome;
 import pojo.Sci;
 import scene.mainScene;
-import tables.comedyTable;
 import tables.sciTable;
 
 import java.io.FileInputStream;

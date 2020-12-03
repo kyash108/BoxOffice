@@ -60,11 +60,4 @@ public class DBConst {
                     SCI_COLUMN_BUDGET + " varchar(40) ,"+
                     "PRIMARY KEY(" +SCI_COLUMN_ID +"))";
 
-
-    //Delete statements for tables
-
-    // update statements for tables
-
-    // insert statements for tables
-
 }

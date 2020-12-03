@@ -1,9 +1,6 @@
 package daos;
-
 import pojo.Comedy;
-
 import java.util.ArrayList;
-
 public interface comedyDao {
     public ArrayList<Comedy> getComedy();
     public Comedy getComedy(String title);

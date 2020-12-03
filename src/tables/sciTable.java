@@ -62,6 +62,11 @@ public class sciTable implements sciDao {
         return null;
     }
 
+    @Override
+    public Sci getSci(String title) {
+        return null;
+    }
+
     public void updateItem(Sci sci) {
         String query = "UPDATE " + DBConst.TABLE_SCI + " SET " +
                 DBConst.SCI_COLUMN_ID + " " + sci.getId() +  "," +

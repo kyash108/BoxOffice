@@ -1,5 +1,6 @@
 package pane;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -10,17 +11,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import main.welcome;
+import pojo.Sports;
+import pojo.DisplayItem;
 import scene.mainScene;
-
+import tables.sportsTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class sportsPane extends HBox{
+public class sportsPane extends HBox {
+    public TableView tableView;
     public sportsPane(){
         VBox vBox = new VBox();
 
-        GridPane gridPane = new GridPane();
 
+        GridPane gridPane = new GridPane();
+//        ItemTable itemTable = new ItemTable();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(0,25,25,25));
@@ -44,6 +49,8 @@ public class sportsPane extends HBox{
         Label idInput = new Label("Id");
         gridPane.add(idInput,0,1);
         TextField idNumber = new TextField();
+
+//    idNumber.setPrefColumnCount(2);
         idNumber.setStyle("-fx-background-color: #cceb8b;");
         gridPane.add(idNumber,1,1);
 
@@ -55,9 +62,10 @@ public class sportsPane extends HBox{
         gridPane.add(inputTitle,1,2);
 
 
-        Label Date = new Label("Date");
+        Label Date = new Label("Year");
         gridPane.add(Date,0,3);
         TextField inputReleaseDate = new TextField();
+        inputReleaseDate.toString().contains("2020/10/10");
         inputReleaseDate.setStyle("-fx-background-color: #cceb8b;");
         gridPane.add(inputReleaseDate,1,3);
 
@@ -76,11 +84,23 @@ public class sportsPane extends HBox{
 
         HBox hboxForButton = new HBox();
         Button insert = new Button("INSERT");
-        insert.setOnAction(e-> insert());
+
+
+        insert.setOnAction(e-> {
+            Sports sport = new Sports(
+
+                    (inputTitle.getText()),inputDirector.getText(),
+                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
+
+            sportsTable sportsTable = new sportsTable();
+            sportsTable.createItem(sport);
+        });
+
         insert.setStyle("-fx-background-color: #cceb8b;");
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
-        delete.setOnAction(e-> delete());
+
+
         Button update = new Button("UPDATE");
         update.setStyle("-fx-background-color: #cceb8b;");
         update.setOnAction(e-> update());
@@ -92,22 +112,49 @@ public class sportsPane extends HBox{
 
 
         VBox vBoxTable = new VBox();
-        Label tableHead = new Label("Sports-Centric");
+        Label tableHead = new Label("Sports");
         tableHead.setFont(Font.font(27));
 
 
-
-        TableView<String> tableView = new TableView<String>();
+        TableView tableView = new TableView();
 
         TableColumn id = new TableColumn("Id");
-        TableColumn Title = new TableColumn("Title");
-        TableColumn ReleaseDate = new TableColumn("Release Date");
-        TableColumn Director = new TableColumn("Director");
-        TableColumn Budget = new TableColumn("Budget");
+        tableView.getColumns().addAll(id);
+
+//    TableColumn Title = new TableColumn("Title");
+        TableColumn<DisplayItem, String> column1 =
+                new TableColumn<>("Title");
+        column1.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getTitle()));
+        tableView.getColumns().add(column1);
+
+//    TableColumn ReleaseDate = new TableColumn("Release Date");
+        TableColumn<DisplayItem, String> column2 =
+                new TableColumn<>("Release Date");
+        column2.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getrDate()));
+        tableView.getColumns().add(column2);
+
+//    TableColumn Director = new TableColumn("Director");
+        TableColumn<DisplayItem, String> column3 =
+                new TableColumn<>("director");
+        column2.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getDirector()));
+        tableView.getColumns().add(column3);
+
+
+//    TableColumn Budget = new TableColumn("Budget");
+        TableColumn<DisplayItem, String> column4 =
+                new TableColumn<>("Budget");
+        column2.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getBudget()));
+        tableView.getColumns().add(column4);
+//        tableView.getItems().addAll(sportsTable.getPrettyItems());
+
         tableView.setMinWidth(400);
         tableView.setMaxHeight(220);
         tableView.setStyle("-fx-background-color: #cceb8b;");
-        tableView.getColumns().addAll(id,Title,ReleaseDate,Director,Budget);
+
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);
@@ -115,15 +162,26 @@ public class sportsPane extends HBox{
         this.getChildren().addAll(vBox,vBoxTable);
 
         this.setStyle("-fx-background-color: #97d076;");
+//        delete.setOnAction(e-> {
+//            Sports sport = new Sports(
+//
+//                    (inputTitle.getText()),inputDirector.getText(),
+//                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
+//
+//            sportsTable sportsTable = new sportsTable();
+//            DisplayItem item = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
+//            sportsTable.deleteItem(item.getId());
+//            refreshTable();
+//        });
+
+    }
+    public void refreshTable() {
+        sportsTable table = new sportsTable();
+        tableView.getItems().clear();
+//        tableView.getItems().addAll(table.getPrettyItems());
     }
 
     public void update(){
-
-    }
-    public void delete(){
-
-    }
-    public void insert(){
 
     }
 }

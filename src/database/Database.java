@@ -47,6 +47,17 @@ public class Database {
             createComedyTable.execute(tableQuery);
             System.out.println(" The " + tableName + " table has been inserted");
         }
+//        Statement createSciTable;
+//        DatabaseMetaData metaData1 = connection.getMetaData();
+////        ResultSet resultSetSci = metaData1.getTables(null,null,tableName,null);
+//        if (resultSet.next()){
+//            System.out.println(tableName+" Table already exists!");
+//        }else {
+//            createSciTable = connection.createStatement();
+//            createSciTable.execute(tableQuery);
+//            System.out.println(" The " + tableName + " table has been inserted");
+//        }
+
     }
     public Connection getConnection(){
         return connection;
