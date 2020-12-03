@@ -5,9 +5,9 @@ public class Comedy {
     private String title;
     private String director;
     private int Rdate;
-    private int Budget;
+    private String Budget;
 
-    public Comedy(int id, String title, String director, int rdate, int budget) {
+    public Comedy(int id, String title, String director, int rdate, String budget) {
         this.id = id;
         this.title = title;
         this.director = director;
@@ -15,15 +15,11 @@ public class Comedy {
         Budget = budget;
     }
 
-    public Comedy(String title, String director, int rdate, int budget) {
+    public Comedy(String title, String director, int rdate, String budget) {
         this.title = title;
         this.director = director;
         Rdate = rdate;
         Budget = budget;
-    }
-
-    public Comedy(){
-
     }
 
     public int getId() {
@@ -58,12 +54,12 @@ public class Comedy {
         Rdate = rdate;
     }
 
-    public int getBudget() {
+    public String getBudget() {
         return Budget;
     }
 
 
-    public void setBudget(int budget) {
+    public void setBudget(String budget) {
         Budget = budget;
 
     }

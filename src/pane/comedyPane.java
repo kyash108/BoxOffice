@@ -78,9 +78,8 @@ public class comedyPane extends HBox {
 
         insert.setOnAction(e-> {
             Comedy comedy = new Comedy(
-
                     (inputTitle.getText()),inputDirector.getText(),
-                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
+                    Integer.parseInt(inputReleaseDate.getText()),inputBudget.getText());
 
             comedyTable comedyTable = new comedyTable();
             comedyTable.createItem(comedy);

@@ -32,7 +32,7 @@ public class comedyTable implements comedyDao {
                                 data.getString(DBConst.COMEDY_COLUMN_TITLE),
                                 data.getString(DBConst.COMEDY_COLUMN_DIRECTOR),
                                 data.getInt(DBConst.COMEDY_COLUMN_RDATE),
-                                data.getInt(DBConst.COMEDY_COLUMN_BUDGET)));
+                                data.getString(DBConst.COMEDY_COLUMN_BUDGET)));
 
             }
         } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class comedyTable implements comedyDao {
                                 data.getString(DBConst.COMEDY_COLUMN_TITLE),
                                 data.getString(DBConst.COMEDY_COLUMN_DIRECTOR),
                                 data.getInt(DBConst.COMEDY_COLUMN_BUDGET),
-                                data.getInt(DBConst.COMEDY_COLUMN_RDATE));
+                                data.getString(DBConst.COMEDY_COLUMN_RDATE));
                 return comedys;
             }
         }catch (SQLException e) {
