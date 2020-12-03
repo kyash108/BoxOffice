@@ -29,7 +29,7 @@ public class sciTable implements sciDao {
                         data.getString(DBConst.SCI_COLUMN_TITLE),
                         data.getString(DBConst.SCI_COLUMN_DIRECTOR),
                         data.getInt(DBConst.SCI_COLUMN_RDATE),
-                        data.getInt(DBConst.SCI_COLUMN_BUDGET)));
+                        data.getString(DBConst.SCI_COLUMN_BUDGET)));
 
             }
         } catch (SQLException e) {
@@ -53,7 +53,7 @@ public class sciTable implements sciDao {
                                 data.getString(DBConst.SCI_COLUMN_TITLE),
                                 data.getString(DBConst.SCI_COLUMN_DIRECTOR),
                                 data.getInt(DBConst.SCI_COLUMN_BUDGET),
-                                data.getInt(DBConst.SCI_COLUMN_RDATE));
+                                data.getString(DBConst.SCI_COLUMN_RDATE));
                 return scis;
             }
         }catch (SQLException e) {

@@ -82,7 +82,7 @@ public class sciPane extends HBox {
             Sci sci = new Sci(
 
                     (inputTitle.getText()),inputDirector.getText(),
-                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
+                    Integer.parseInt(inputReleaseDate.getText()),inputBudget.getText());
 
             sciTable sciTable = new sciTable();
             sciTable.createItem(sci);

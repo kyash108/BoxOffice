@@ -82,7 +82,7 @@ public class sportsPane extends HBox {
             Sports sport = new Sports(
 
                     (inputTitle.getText()),inputDirector.getText(),
-                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
+                    Integer.parseInt(inputReleaseDate.getText()),inputBudget.getText());
 
             sportsTable sportsTable = new sportsTable();
             sportsTable.createItem(sport);

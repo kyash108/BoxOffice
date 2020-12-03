@@ -31,7 +31,7 @@ public class sportsTable implements sportsDao {
                                 data.getString(DBConst.SPORTS_COLUMN_TITLE),
                                 data.getString(DBConst.SPORTS_COLUMN_DIRECTOR),
                                 data.getInt(DBConst.SPORTS_COLUMN_RDATE),
-                                data.getInt(DBConst.SPORTS_COLUMN_BUDGET)));
+                                data.getString(DBConst.SPORTS_COLUMN_BUDGET)));
 
             }
         } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class sportsTable implements sportsDao {
                                 data.getString(DBConst.SPORTS_COLUMN_TITLE),
                                 data.getString(DBConst.SPORTS_COLUMN_DIRECTOR),
                                 data.getInt(DBConst.SPORTS_COLUMN_BUDGET),
-                                data.getInt(DBConst.SPORTS_COLUMN_RDATE));
+                                data.getString(DBConst.SPORTS_COLUMN_RDATE));
                 return sport;
             }
         }catch (SQLException e) {
