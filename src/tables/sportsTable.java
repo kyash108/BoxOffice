@@ -2,6 +2,7 @@ package tables;
 import daos.sportsDao;
 import database.DBConst;
 import database.Database;
+import pojo.DisplayItem;
 import pojo.Sports;
 
 import java.sql.ResultSet;
@@ -98,28 +99,26 @@ public class sportsTable implements sportsDao {
         }
     }
 
-//    public static ArrayList<DisplayItem> getPrettyItems(){
-//        ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
-//        String query = "SELECT sports.id, sports.title AS sports_title," +
-//                "sports.director as sports_director," +
-//                "sports.rDate as sports_rDate," +
-//                "sports.budget as sports_budget,";
-//        try {
-//            Statement getItems = db.getConnection().createStatement();
-//            ResultSet data = getItems.executeQuery(query);
-//            while(data.next()) {
-//                items.add(new DisplayItem(data.getInt("id"),
-//                        data.getString("sports_title"),
-//                        data.getString("sports_director"),
-//                        data.getString("sports_rDate"),
-//                        data.getString("sports_budget")));
-//            }
-//        } catch (SQLException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        return items;
-//    }
+    public static ArrayList<DisplayItem> getPrettyItems(){
+        ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
+        String query = "SELECT * from sports";
+
+        try {
+            Statement getItems = db.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                items.add(new DisplayItem(data.getString("id"),
+                        data.getString("title"),
+                        data.getString("director"),
+                        data.getString("date"),
+                        data.getString("budget")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return items;
+    }
 
 }
 

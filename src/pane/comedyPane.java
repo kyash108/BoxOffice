@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import main.welcome;
 import pojo.Comedy;
 import pojo.DisplayItem;
+import scene.comedyScene;
 import scene.mainScene;
 import tables.comedyTable;
 import java.io.FileInputStream;
@@ -86,6 +87,7 @@ public class comedyPane extends HBox {
 
             comedyTable comedyTable = new comedyTable();
             comedyTable.createItem(comedy);
+            welcome.stage.setScene(new comedyScene());
         });
 
         insert.setStyle("-fx-background-color: #cceb8b;");
@@ -119,6 +121,7 @@ public class comedyPane extends HBox {
         column2.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getTitle()));
         column2.setStyle("-fx-background-color: #cceb8b;");
+        column2.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
         tableView.getColumns().add(column2);
 
 //    TableColumn ReleaseDate = new TableColumn("Release Date");
@@ -127,6 +130,7 @@ public class comedyPane extends HBox {
         column3.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getrDate()));
         column3.setStyle("-fx-background-color: #cceb8b;");
+        column3.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
         tableView.getColumns().add(column3);
 
 //    TableColumn Director = new TableColumn("Director");
@@ -134,6 +138,7 @@ public class comedyPane extends HBox {
                 new TableColumn<>("director");
         column4.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getDirector()));
+        column4.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
         column4.setStyle("-fx-background-color: #cceb8b;");
         tableView.getColumns().add(column4);
 
@@ -144,13 +149,18 @@ public class comedyPane extends HBox {
         column5.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getBudget()));
         column5.setStyle("-fx-background-color: #cceb8b;");
+        column5.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
         tableView.getColumns().add(column5);
+
 
         tableView.getItems().addAll(comedyTable.getPrettyItems());
 
-        tableView.setMinWidth(400);
+//        tableView.setMinWidth(400);
         tableView.setMaxHeight(220);
-        tableView.setStyle("-fx-background-color: #cceb8b;");
+
+        tableView.setMinWidth(390);
+        tableView.setMaxWidth(396);
+//        tableView.setStyle("-fx-background-color: #cceb8b;");
 
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
@@ -159,23 +169,7 @@ public class comedyPane extends HBox {
         this.getChildren().addAll(vBox,vBoxTable);
 
         this.setStyle("-fx-background-color: #97d076;");
-//        delete.setOnAction(e-> {
-//            Comedy comedy = new Comedy(
-//
-//                    (inputTitle.getText()),inputDirector.getText(),
-//                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
-//
-//            comedyTable comedyTable = new comedyTable();
-//            DisplayItem item = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-//            comedyTable.deleteItem(item.getId());
-//            refreshTable();
-//        });
 
-    }
-    public void refreshTable() {
-        comedyTable table = new comedyTable();
-        tableView.getItems().clear();
-//        tableView.getItems().addAll(table.getPrettyItems());
     }
 
 }

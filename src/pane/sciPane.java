@@ -1,5 +1,6 @@
 package pane;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -10,8 +11,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import main.welcome;
+import pojo.DisplayItem;
 import pojo.Sci;
 import scene.mainScene;
+import scene.sciScene;
+import scene.sportsScene;
+import tables.comedyTable;
 import tables.sciTable;
 
 import java.io.FileInputStream;
@@ -81,6 +86,7 @@ public class sciPane extends HBox {
 
             sciTable sciTable = new sciTable();
             sciTable.createItem(sci);
+            welcome.stage.setScene(new sciScene());
         });
         insert.setStyle("-fx-background-color: #cceb8b;");
         Button delete = new Button("DELETE");
@@ -100,17 +106,58 @@ public class sciPane extends HBox {
 
 
 
-        TableView<String> tableView = new TableView<String>();
+        TableView tableView = new TableView();
 
-        TableColumn id = new TableColumn("Id");
-        TableColumn Title = new TableColumn("Title");
-        TableColumn ReleaseDate = new TableColumn("Year");
-        TableColumn Director = new TableColumn("Director");
-        TableColumn Budget = new TableColumn("Budget");
-        tableView.setMinWidth(400);
+        TableColumn<DisplayItem, String> column1 =
+                new TableColumn<>("id");
+        column1.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getId()));
+        column1.setStyle("-fx-background-color: #cceb8b;");
+        column1.setMinWidth(5);
+        tableView.getColumns().add(column1);
+
+//    TableColumn Title = new TableColumn("Title");
+        TableColumn<DisplayItem, String> column2 =
+                new TableColumn<>("Title");
+        column2.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getTitle()));
+        column2.setStyle("-fx-background-color: #cceb8b;");
+        column2.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
+        tableView.getColumns().add(column2);
+
+//    TableColumn ReleaseDate = new TableColumn("Release Date");
+        TableColumn<DisplayItem, String> column3 =
+                new TableColumn<>("Year");
+        column3.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getrDate()));
+        column3.setStyle("-fx-background-color: #cceb8b;");
+        column3.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
+        tableView.getColumns().add(column3);
+
+//    TableColumn Director = new TableColumn("Director");
+        TableColumn<DisplayItem, String> column4 =
+                new TableColumn<>("director");
+        column4.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getDirector()));
+        column4.setStyle("-fx-background-color: #cceb8b;");
+        column4.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
+        tableView.getColumns().add(column4);
+
+
+//    TableColumn Budget = new TableColumn("Budget");
+        TableColumn<DisplayItem, String> column5 =
+                new TableColumn<>("Budget");
+        column5.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getBudget()));
+        column5.setStyle("-fx-background-color: #cceb8b;");
+        column5.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
+        tableView.getColumns().add(column5);
+
+        tableView.getItems().addAll(sciTable.getPrettyItems());
+
         tableView.setMaxHeight(220);
-        tableView.setStyle("-fx-background-color: #cceb8b;");
-        tableView.getColumns().addAll(id,Title,ReleaseDate,Director,Budget);
+        tableView.setMinWidth(390);
+        tableView.setMaxWidth(396);
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);

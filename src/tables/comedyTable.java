@@ -111,8 +111,8 @@ public class comedyTable implements comedyDao {
             while(data.next()) {
                 items.add(new DisplayItem(data.getString("id"),
                         data.getString("title"),
-                        data.getString("date"),
                         data.getString("director"),
+                        data.getString("date"),
                         data.getString("budget")));
             }
         } catch (SQLException e) {

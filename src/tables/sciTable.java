@@ -2,6 +2,7 @@ package tables;
 import daos.sciDao;
 import database.DBConst;
 import database.Database;
+import pojo.DisplayItem;
 import pojo.Sci;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -97,33 +98,26 @@ public class sciTable implements sciDao {
             e.printStackTrace();
         }
     }
+    public static ArrayList<DisplayItem> getPrettyItems(){
+        ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
+        String query = "SELECT * from scifi";
 
-//    public void insertItem(Sci sci) {
-//        String query = "INSERT INTO " + DBConst.TABLE_SCI + "(" +
-//                DBConst.SCI_COLUMN_TITLE + "," + DBConst.SCI_COLUMN_DIRECTOR + "," + DBConst.SCI_COLUMN_RDATE+
-//                ","+DBConst.SCI_COLUMN_BUDGET+") VALUES ('" +
-//                sci.getTitle() + "','" + sci.getDirector() + "','" +
-//                sci.getBudget() + "','" + sci.getRdate() +
-//                "')";
-//    }
-//
-//    public int getItemCount(Sci sci) {
-//        int count = -1;
-//        try {
-//            PreparedStatement getCount = db.getConnection()
-//                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_SCI + " WHERE "
-//                                    + DBConst.SCI_COLUMN_TITLE + " = '" + sci + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
-//                            ResultSet.CONCUR_UPDATABLE);
-//            ResultSet data = getCount.executeQuery();
-//            data.last();
-//            count = data.getRow();
-//        }
-//        catch(SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return count;
-//    }
-
+        try {
+            Statement getItems = db.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                items.add(new DisplayItem(data.getString("id"),
+                        data.getString("title"),
+                        data.getString("director"),
+                        data.getString("date"),
+                        data.getString("budget")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return items;
+    }
 
 }
 
