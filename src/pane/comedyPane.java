@@ -1,6 +1,5 @@
 package pane;
 
-import database.Database;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,11 +15,8 @@ import pojo.Comedy;
 import pojo.DisplayItem;
 import scene.mainScene;
 import tables.comedyTable;
-
-import javax.xml.crypto.Data;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.Connection;
 
 public class comedyPane extends HBox {
     public TableView tableView;
@@ -66,7 +62,7 @@ public class comedyPane extends HBox {
         gridPane.add(inputTitle,1,2);
 
 
-        Label Date = new Label("Date");
+        Label Date = new Label("Year");
         gridPane.add(Date,0,3);
         TextField inputReleaseDate = new TextField();
         inputReleaseDate.toString().contains("2020/10/10");

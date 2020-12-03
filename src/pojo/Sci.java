@@ -4,19 +4,26 @@ public class Sci {
     private int id;
     private String title;
     private String director;
-    private String Rdate;
-    private String Budget;
+    private int Rdate;
+    private int Budget;
 
-    public Sci( String title, String director, String rdate, String budget) {
-
+    public Sci(int id, String title, String director, int rdate, int budget) {
+        this.id = id;
         this.title = title;
         this.director = director;
         Rdate = rdate;
         Budget = budget;
     }
 
-    public Sci(int id) {
-        this.id = id;
+    public Sci(String title, String director, int rdate, int budget) {
+        this.title = title;
+        this.director = director;
+        Rdate = rdate;
+        Budget = budget;
+    }
+
+    public Sci(){
+
     }
 
     public int getId() {
@@ -43,19 +50,27 @@ public class Sci {
         this.director = director;
     }
 
-    public String getRdate() {
+    public int getRdate() {
         return Rdate;
     }
 
-    public void setRdate(String rdate) {
+    public void setRdate(int rdate) {
         Rdate = rdate;
     }
 
-    public String getBudget() {
+    public int getBudget() {
         return Budget;
     }
 
-    public void setBudget(String budget) {
+
+    public void setBudget(int budget) {
         Budget = budget;
+
+    }
+
+    @Override
+    public String toString() {
+        return getTitle()+ " ";
     }
 }
+

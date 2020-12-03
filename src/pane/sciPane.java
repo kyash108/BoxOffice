@@ -10,12 +10,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import main.welcome;
+import pojo.Sci;
 import scene.mainScene;
+import tables.comedyTable;
+import tables.sciTable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class sciPane extends HBox {
+    public TableView tableView;
     public sciPane(){
         VBox vBox = new VBox();
 
@@ -55,7 +59,7 @@ public class sciPane extends HBox {
         gridPane.add(inputTitle,1,2);
 
 
-        Label Date = new Label("Date");
+        Label Date = new Label("Year");
         gridPane.add(Date,0,3);
         TextField inputReleaseDate = new TextField();
         inputReleaseDate.setStyle("-fx-background-color: #cceb8b;");
@@ -76,7 +80,15 @@ public class sciPane extends HBox {
 
         HBox hboxForButton = new HBox();
         Button insert = new Button("INSERT");
-        insert.setOnAction(e-> insert());
+        insert.setOnAction(e-> {
+            Sci sci = new Sci(
+
+                    (inputTitle.getText()),inputDirector.getText(),
+                    Integer.parseInt(inputReleaseDate.getText()),Integer.parseInt(inputBudget.getText()));
+
+            sciTable sciTable = new sciTable();
+            sciTable.createItem(sci);
+        });
         insert.setStyle("-fx-background-color: #cceb8b;");
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
@@ -101,7 +113,7 @@ public class sciPane extends HBox {
 
         TableColumn id = new TableColumn("Id");
         TableColumn Title = new TableColumn("Title");
-        TableColumn ReleaseDate = new TableColumn("Release Date");
+        TableColumn ReleaseDate = new TableColumn("Year");
         TableColumn Director = new TableColumn("Director");
         TableColumn Budget = new TableColumn("Budget");
         tableView.setMinWidth(400);
@@ -121,9 +133,6 @@ public class sciPane extends HBox {
 
     }
     public void delete(){
-
-    }
-    public void insert(){
 
     }
 }
