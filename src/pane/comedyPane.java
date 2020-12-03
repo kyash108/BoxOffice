@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import main.welcome;
 import pojo.Comedy;
 import pojo.DisplayItem;
+import scene.chartScene;
 import scene.comedyScene;
 import scene.mainScene;
 import tables.comedyTable;
@@ -90,7 +91,11 @@ public class comedyPane extends HBox {
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 
-        hboxForButton.getChildren().addAll(insert,delete);
+        Button chart = new Button("CHART");
+        chart.setStyle("-fx-background-color: #cceb8b;");
+        chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
+
+        hboxForButton.getChildren().addAll(insert,delete,chart);
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(backButton,gridPane,hboxForButton);

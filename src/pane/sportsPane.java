@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import main.welcome;
 import pojo.Sports;
 import pojo.DisplayItem;
+import scene.chartScene;
 import scene.mainScene;
 import scene.sportsScene;
 import tables.comedyTable;
@@ -46,6 +47,7 @@ public class sportsPane extends HBox {
         backButton.setMaxHeight(30);
         backButton.setMaxWidth(30);
         backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
+
 
         Label labelInput = new Label("Title");
         gridPane.add(labelInput,0,2);
@@ -93,7 +95,11 @@ public class sportsPane extends HBox {
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 
-        hboxForButton.getChildren().addAll(insert,delete);
+        Button chart = new Button("CHART");
+        chart.setStyle("-fx-background-color: #cceb8b;");
+        chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
+
+        hboxForButton.getChildren().addAll(insert,delete,chart);
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(backButton,gridPane,hboxForButton);
