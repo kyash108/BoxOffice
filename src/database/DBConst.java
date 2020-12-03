@@ -38,7 +38,7 @@ public class DBConst {
                     COMEDY_COLUMN_TITLE + " varchar(50), "+
                     COMEDY_COLUMN_RDATE + " int(4),"+
                     COMEDY_COLUMN_DIRECTOR + " varchar(70), "+
-                    COMEDY_COLUMN_BUDGET + " varchar(40) ,"+
+                    COMEDY_COLUMN_BUDGET + " char(40) ,"+
                     "PRIMARY KEY(" +COMEDY_COLUMN_ID +"))";
 
 
@@ -48,7 +48,7 @@ public class DBConst {
                     SPORTS_COLUMN_TITLE + " varchar(50), "+
                     SPORTS_COLUMN_RDATE + " int(4),"+
                     SPORTS_COLUMN_DIRECTOR + " varchar(70), "+
-                    SPORTS_COLUMN_BUDGET + " varchar(40) ,"+
+                    SPORTS_COLUMN_BUDGET + " char(40) ,"+
                     "PRIMARY KEY(" +SPORTS_COLUMN_ID +"))";
 
     public static final String CREATE_TABLE_SCIFI =
@@ -57,7 +57,7 @@ public class DBConst {
                     SCI_COLUMN_TITLE + " varchar(50), "+
                     SCI_COLUMN_RDATE + " int(4),"+
                     SCI_COLUMN_DIRECTOR + " varchar(70), "+
-                    SCI_COLUMN_BUDGET + " varchar(40) ,"+
+                    SCI_COLUMN_BUDGET + " char(40) ,"+
                     "PRIMARY KEY(" +SCI_COLUMN_ID +"))";
 
 }

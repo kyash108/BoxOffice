@@ -105,7 +105,7 @@ public class comedyPane extends HBox {
         TableView tableView = new TableView();
 
         TableColumn<DisplayItem, String> column1 =
-                new TableColumn<>("id");
+                new TableColumn<>("Id");
         column1.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getId()));
         column1.setStyle("-fx-background-color: #cceb8b;");
