@@ -11,10 +11,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import main.welcome;
+import pojo.Sci;
 import scene.comedyScene;
 import scene.sciScene;
 import scene.sportsScene;
-
+import tables.sciTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -57,7 +58,6 @@ public class mainPane extends BorderPane {
         comedy.setMinWidth(150);
         sci.setMinWidth(150);
         sports.setMinWidth(150);
-
         comedy.setOnAction(e-> welcome.stage.setScene(new comedyScene()));
         sports.setOnAction(e-> welcome.stage.setScene(new sportsScene()));
         sci.setOnAction(e-> welcome.stage.setScene(new sciScene()));

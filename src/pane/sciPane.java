@@ -16,8 +16,6 @@ import pojo.DisplayItem;
 import pojo.Sci;
 import scene.mainScene;
 import scene.sciScene;
-import scene.sportsScene;
-import tables.comedyTable;
 import tables.sciTable;
 
 import java.io.FileInputStream;
