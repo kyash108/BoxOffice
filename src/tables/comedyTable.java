@@ -101,28 +101,26 @@ public class comedyTable implements comedyDao {
         }
     }
 
-//    public static ArrayList<DisplayItem> getPrettyItems(){
-//        ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
-//        String query = "SELECT comedy.id, comedy.title AS comedy_title," +
-//                "comedy.director as comedy_director," +
-//                "comedy.rDate as comedy_rDate," +
-//                "comedy.budget as comedy_budget,";
-//        try {
-//            Statement getItems = db.getConnection().createStatement();
-//            ResultSet data = getItems.executeQuery(query);
-//            while(data.next()) {
-//                items.add(new DisplayItem(data.getInt("id"),
-//                        data.getString("comedy_title"),
-//                        data.getString("comedy_director"),
-//                        data.getString("comedy_rDate"),
-//                        data.getString("comedy_budget")));
-//            }
-//        } catch (SQLException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        return items;
-//    }
+    public static ArrayList<DisplayItem> getPrettyItems(){
+        ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
+        String query = "SELECT * from comedy";
+
+        try {
+            Statement getItems = db.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                items.add(new DisplayItem(data.getString("id"),
+                        data.getString("title"),
+                        data.getString("date"),
+                        data.getString("director"),
+                        data.getString("budget")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return items;
+    }
 
 }
 

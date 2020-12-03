@@ -1,13 +1,13 @@
 package pojo;
 
 public class DisplayItem {
-    private int id;
+    private String id;
     private String title;
     private String director;
     private String rDate;
     private String budget;
 
-    public DisplayItem(int id, String title, String director, String rDate, String budget) {
+    public DisplayItem(String id, String title, String director, String rDate, String budget) {
         this.id = id;
         this.title = title;
         this.director = director;
@@ -15,12 +15,14 @@ public class DisplayItem {
         this.budget = budget;
     }
 
-    public int getId() {
-        return id;
+
+
+    public String getId() {
+        return String.valueOf(id);
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = String.valueOf(id);
     }
 
     public String getTitle() {
