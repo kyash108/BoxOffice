@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import main.welcome;
@@ -21,13 +22,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class sportsPane extends HBox {
-    public TableView tableView;
     public sportsPane(){
         VBox vBox = new VBox();
 
 
         GridPane gridPane = new GridPane();
-//        ItemTable itemTable = new ItemTable();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(0,25,25,25));
@@ -108,54 +107,46 @@ public class sportsPane extends HBox {
         TableView tableView = new TableView();
 
         TableColumn<DisplayItem, String> column1 =
-                new TableColumn<>("id");
+                new TableColumn<>("Id");
         column1.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getId()));
         column1.setStyle("-fx-background-color: #cceb8b;");
         column1.setMinWidth(5);
         tableView.getColumns().add(column1);
 
-//    TableColumn Title = new TableColumn("Title");
         TableColumn<DisplayItem, String> column2 =
                 new TableColumn<>("Title");
         column2.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getTitle()));
         column2.setStyle("-fx-background-color: #cceb8b;");
-        column2.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
         tableView.getColumns().add(column2);
 
-//    TableColumn ReleaseDate = new TableColumn("Release Date");
         TableColumn<DisplayItem, String> column3 =
                 new TableColumn<>("Year");
         column3.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getrDate()));
         column3.setStyle("-fx-background-color: #cceb8b;");
-        column3.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
         tableView.getColumns().add(column3);
 
-//    TableColumn Director = new TableColumn("Director");
         TableColumn<DisplayItem, String> column4 =
-                new TableColumn<>("director");
+                new TableColumn<>("Director");
         column4.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getDirector()));
         column4.setStyle("-fx-background-color: #cceb8b;");
-        column4.prefWidthProperty().bind(tableView.widthProperty().multiply(0.2));
         tableView.getColumns().add(column4);
 
 
-//    TableColumn Budget = new TableColumn("Budget");
         TableColumn<DisplayItem, String> column5 =
                 new TableColumn<>("Budget");
         column5.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getBudget()));
-        column5.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
         column5.setStyle("-fx-background-color: #cceb8b;");
         tableView.getColumns().add(column5);
         tableView.getItems().addAll(sportsTable.getPrettyItems());
 
         tableView.setMaxHeight(220);
-        tableView.setMinWidth(390);
-        tableView.setMaxWidth(396);
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tableView.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);

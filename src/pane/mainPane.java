@@ -21,8 +21,6 @@ import java.io.FileNotFoundException;
 public class mainPane extends BorderPane {
     public mainPane(){
 
-//        BorderPane borderPane = new BorderPane();
-
         Font font1=Font.font("Times", FontWeight.BOLD,
                 FontPosture.ITALIC,30);
         Font font2=Font.font("Times", FontWeight.BOLD,

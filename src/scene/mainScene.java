@@ -1,6 +1,4 @@
 package scene;
-
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import pane.mainPane;
 

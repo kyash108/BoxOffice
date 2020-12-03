@@ -4,7 +4,6 @@ import database.DBConst;
 import database.Database;
 import pojo.DisplayItem;
 import pojo.Sports;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

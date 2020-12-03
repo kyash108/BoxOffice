@@ -1,7 +1,4 @@
 package database;
-
-
-
 public class Login {
     public static final String DB_NAME = "sbajajdb";
     public static final String DB_USER = "sbajaj";

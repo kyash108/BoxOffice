@@ -1,5 +1,4 @@
 package scene;
-
 import javafx.scene.Scene;
 import pane.sportsPane;
 
