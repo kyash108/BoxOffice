@@ -130,7 +130,7 @@ public class sportsPane extends HBox {
 
 //    TableColumn ReleaseDate = new TableColumn("Release Date");
         TableColumn<DisplayItem, String> column2 =
-                new TableColumn<>("Release Date");
+                new TableColumn<>("Year");
         column2.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getrDate()));
         tableView.getColumns().add(column2);
