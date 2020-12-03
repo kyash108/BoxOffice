@@ -68,23 +68,6 @@ public class comedyTable implements comedyDao {
         return null;
     }
 
-    @Override
-    public void updateItem(Comedy comedy) {
-        String query = "UPDATE " + DBConst.TABLE_COMEDY + " SET " +
-                DBConst.COMEDY_COLUMN_ID + " " + comedy.getId() +  "," +
-                DBConst.COMEDY_COLUMN_TITLE + " " + comedy.getTitle() +  "," +
-                DBConst.COMEDY_COLUMN_DIRECTOR + " " + comedy.getDirector() + "," +
-                DBConst.COMEDY_COLUMN_RDATE + " " + comedy.getRdate() +
-                DBConst.COMEDY_COLUMN_BUDGET + " " + comedy.getBudget() +
-                " WHERE " + DBConst.COMEDY_COLUMN_ID + " = " + comedy.getId();
-        try {
-            Statement updateItem = db.getConnection().createStatement();
-            updateItem.executeQuery(query);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void deleteItem(int id) {

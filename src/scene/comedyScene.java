@@ -4,8 +4,6 @@ import pane.comedyPane;
 
 public class comedyScene extends Scene {
     public comedyScene(){
-        super(new comedyPane(),
-                700,
-                300);
+        super(new comedyPane(), 700, 300);
     }
 }

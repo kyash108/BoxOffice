@@ -67,24 +67,6 @@ public class sportsTable implements sportsDao {
     }
 
     @Override
-    public void updateItem(Sports sports) {
-        String query = "UPDATE " + DBConst.TABLE_SPORTS + " SET " +
-                DBConst.SPORTS_COLUMN_ID + " " + sports.getId() +  "," +
-                DBConst.SPORTS_COLUMN_TITLE + " " + sports.getTitle() +  "," +
-                DBConst.SPORTS_COLUMN_DIRECTOR + " " + sports.getDirector() + "," +
-                DBConst.SPORTS_COLUMN_RDATE + " " + sports.getRdate() +
-                DBConst.SPORTS_COLUMN_BUDGET + " " + sports.getBudget() +
-                " WHERE " + DBConst.SPORTS_COLUMN_ID + " = " + sports.getId();
-        try {
-            Statement updateItem = db.getConnection().createStatement();
-            updateItem.executeQuery(query);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public void deleteItem(int id) {
         String query  = "DELETE FROM " + DBConst.TABLE_SPORTS + " WHERE " +
                 DBConst.SPORTS_COLUMN_ID + " = " + id;

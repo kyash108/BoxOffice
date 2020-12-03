@@ -67,22 +67,6 @@ public class sciTable implements sciDao {
         return null;
     }
 
-    public void updateItem(Sci sci) {
-        String query = "UPDATE " + DBConst.TABLE_SCI + " SET " +
-                DBConst.SCI_COLUMN_ID + " " + sci.getId() +  "," +
-                DBConst.SCI_COLUMN_TITLE + " " + sci.getTitle() +  "," +
-                DBConst.SCI_COLUMN_DIRECTOR + " " + sci.getDirector() + "," +
-                DBConst.SCI_COLUMN_RDATE + " " + sci.getRdate() +
-                DBConst.SCI_COLUMN_BUDGET + " " + sci.getBudget() +
-                " WHERE " + DBConst.SCI_COLUMN_ID + " = " + sci.getId();
-        try {
-            Statement updateItem = db.getConnection().createStatement();
-            updateItem.executeQuery(query);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void deleteItem(int id) {

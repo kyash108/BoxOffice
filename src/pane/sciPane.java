@@ -44,12 +44,6 @@ public class sciPane extends HBox {
         backButton.setMaxWidth(30);
         backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
 
-        Label idInput = new Label("Id");
-        gridPane.add(idInput,0,1);
-        TextField idNumber = new TextField();
-        idNumber.setStyle("-fx-background-color: #cceb8b;");
-        gridPane.add(idNumber,1,1);
-
 
         Label labelInput = new Label("Title");
         gridPane.add(labelInput,0,2);
@@ -92,11 +86,9 @@ public class sciPane extends HBox {
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
         delete.setOnAction(e-> delete());
-        Button update = new Button("UPDATE");
-        update.setStyle("-fx-background-color: #cceb8b;");
-        update.setOnAction(e-> update());
 
-        hboxForButton.getChildren().addAll(insert,delete,update);
+
+        hboxForButton.getChildren().addAll(insert,delete);
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(backButton,gridPane,hboxForButton);
@@ -128,9 +120,6 @@ public class sciPane extends HBox {
         this.setStyle("-fx-background-color: #97d076;");
     }
 
-    public void update(){
-
-    }
     public void delete(){
 
     }
