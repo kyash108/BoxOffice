@@ -17,7 +17,10 @@ import pojo.DisplayItem;
 import scene.chartScene;
 import scene.comedyScene;
 import scene.mainScene;
+import scene.sportsScene;
 import tables.comedyTable;
+import tables.sportsTable;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -88,14 +91,11 @@ public class comedyPane extends HBox {
         });
 
         insert.setStyle("-fx-background-color: #cceb8b;");
-        Button delete = new Button("DELETE");
-        delete.setStyle("-fx-background-color: #cceb8b;");
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
         chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
 
-        hboxForButton.getChildren().addAll(insert,delete,chart);
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(backButton,gridPane,hboxForButton);
@@ -154,7 +154,16 @@ public class comedyPane extends HBox {
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);
+        Button delete = new Button("DELETE");
+        delete.setStyle("-fx-background-color: #cceb8b;");
 
+        delete.setOnAction(e->{
+            DisplayItem comedy = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
+            comedyTable.deleteItem(comedy.getId());
+            welcome.stage.setScene(new comedyScene());
+
+        });
+        hboxForButton.getChildren().addAll(insert,delete,chart);
         this.getChildren().addAll(vBox,vBoxTable);
 
         this.setStyle("-fx-background-color: #97d076;");

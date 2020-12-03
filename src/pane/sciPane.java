@@ -15,8 +15,10 @@ import main.welcome;
 import pojo.DisplayItem;
 import pojo.Sci;
 import scene.chartScene;
+import scene.comedyScene;
 import scene.mainScene;
 import scene.sciScene;
+import tables.comedyTable;
 import tables.sciTable;
 
 import java.io.FileInputStream;
@@ -88,16 +90,11 @@ public class sciPane extends HBox {
             welcome.stage.setScene(new sciScene());
         });
         insert.setStyle("-fx-background-color: #cceb8b;");
-        Button delete = new Button("DELETE");
-        delete.setStyle("-fx-background-color: #cceb8b;");
-        delete.setOnAction(e-> delete());
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
         chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
 
-
-        hboxForButton.getChildren().addAll(insert,delete,chart);
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(backButton,gridPane,hboxForButton);
@@ -156,9 +153,18 @@ public class sciPane extends HBox {
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);
+        Button delete = new Button("DELETE");
+        delete.setStyle("-fx-background-color: #cceb8b;");
 
+        delete.setOnAction(e->{
+            DisplayItem sci = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
+            sciTable.deleteItem(sci.getId());
+            welcome.stage.setScene(new sciScene());
+
+        });
+
+        hboxForButton.getChildren().addAll(insert,delete,chart);
         this.getChildren().addAll(vBox,vBoxTable);
-
         this.setStyle("-fx-background-color: #97d076;");
     }
 

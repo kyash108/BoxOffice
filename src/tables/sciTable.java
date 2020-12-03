@@ -14,6 +14,18 @@ public class sciTable implements sciDao {
     static Database db = Database.getInstance();
     ArrayList<Sci> scis;
 
+    public static void deleteItem(String id) {
+        String query  = "DELETE FROM " + DBConst.TABLE_SCI + " WHERE " +
+                DBConst.SCI_COLUMN_ID + " = " + id;
+        try {
+            db.getConnection().createStatement().execute(query);
+            System.out.println("Deleted record");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 
     public ArrayList<Sci> getSci() {
         String query = "SELECT * FROM "+ DBConst.TABLE_SCI;

@@ -15,6 +15,18 @@ public class comedyTable implements comedyDao {
     static Database db = Database.getInstance();
     ArrayList<Comedy> comedys;
 
+    public static void deleteItem(String id) {
+        String query  = "DELETE FROM " + DBConst.TABLE_COMEDY + " WHERE " +
+                DBConst.COMEDY_COLUMN_ID + " = " + id;
+        try {
+            db.getConnection().createStatement().execute(query);
+            System.out.println("Deleted record");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public ArrayList<Comedy> getComedy() {
