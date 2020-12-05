@@ -10,6 +10,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/*
+@author Sidharth Bajaj
+@date 26 Nov
+created tables and utilised crud statement in them
+*/
+
 public class comedyTable implements comedyDao {
 
     static Database db = Database.getInstance();
@@ -27,7 +33,11 @@ public class comedyTable implements comedyDao {
         }
     }
 
-
+    /*
+    @author Sidharth Bajaj
+    @date 26 nov
+    getting tables from the database after the table is created
+    */
     @Override
     public ArrayList<Comedy> getComedy() {
         String query = "SELECT * FROM "+ DBConst.TABLE_COMEDY;
@@ -79,7 +89,11 @@ public class comedyTable implements comedyDao {
         return null;
     }
 
-
+    /*
+    @author Sidharth Bajaj
+    @date 26 nov
+    Created delete statement so that the selected/clicked record gets deleted.
+    */
     @Override
     public void deleteItem(int id) {
         String query  = "DELETE FROM " + DBConst.TABLE_COMEDY + " WHERE " +
@@ -92,7 +106,11 @@ public class comedyTable implements comedyDao {
             e.printStackTrace();
         }
     }
-
+    /*
+        @author Sidharth Bajaj
+        @date 26 nov
+        Created delete statement so that the selected/clicked record gets deleted.
+        */
     @Override
     public void createItem(Comedy comedy) {
         String query = "INSERT INTO " + DBConst.TABLE_COMEDY +
@@ -111,6 +129,12 @@ public class comedyTable implements comedyDao {
             e.printStackTrace();
         }
     }
+
+    /*
+    @author Sidharth Bajaj
+    @date 2 Dec
+    Created delete statement so that the selected/clicked record gets deleted.
+    */
 
     public static ArrayList<DisplayItem> getPrettyItems(){
         ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();

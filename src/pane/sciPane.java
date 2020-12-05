@@ -23,9 +23,24 @@ import tables.sciTable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
+/*
+    @author Yash Kumar
+    @date Nov 11
+    Created Sports table page in javafx displaying the insert bars and tableview which is
+    getting data from the database and displaying it to the user.
+    */
 public class sciPane extends HBox {
     public sciPane(){
+
+        /*
+        @author Yash Kumar
+        @date Nov 11
+        Created Vbox with gridpane.
+        Buttons and textfields are inserted in the gridpane.
+        On the right side - places tableview which is getting table.
+        */
+
+
         VBox vBox = new VBox();
 
         GridPane gridPane = new GridPane();
@@ -33,6 +48,20 @@ public class sciPane extends HBox {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(0,25,25,25));
+
+         /*
+        @author Yash Kumar
+        @date 11 nov
+        Inserted image for utilizing the back button and also created the back button in photoshop.
+        */
+
+        /*
+        @author Sidharth Bajaj
+        @date 12 nov
+        Inserted image for utilizing the back button and also created the back button in photoshop.
+        Made png file as an image to shift to previous panes
+        */
+
 
         Image image = null;
         try {
@@ -50,6 +79,11 @@ public class sciPane extends HBox {
         backButton.setMaxWidth(30);
         backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
 
+        /*
+        @author Yash Kumar
+        @date 11 nov
+        Labels for textfields for getting inputs from the user
+        */
 
         Label labelInput = new Label("Title");
         gridPane.add(labelInput,0,2);
@@ -78,6 +112,19 @@ public class sciPane extends HBox {
         gridPane.add(inputBudget,1,5);
 
         HBox hboxForButton = new HBox();
+        /*
+         @author Yash Kumar
+         @date 11 nov
+         created insert button for function
+        */
+
+        /*
+        @author Sidharth Bajaj
+        @date 2 dec
+        insert button inserting data to database with proper datatypes
+        that are matching with table structure.
+         */
+
         Button insert = new Button("INSERT");
         insert.setOnAction(e-> {
             Sci sci = new Sci(
@@ -104,7 +151,16 @@ public class sciPane extends HBox {
         Label tableHead = new Label("Sci-fi");
         tableHead.setFont(Font.font(27));
 
+/*
+        @author Yash Kumar
+        @date 11 nov
+        created basic table
 
+        @author Yash Kumar
+        @date 2 dec
+        changed the tableView and made code for the data to be viewed
+        from database
+         */
 
         TableView tableView = new TableView();
 
@@ -153,6 +209,21 @@ public class sciPane extends HBox {
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);
+
+        /*
+        @author Yash Kumar
+        @date 11 nov
+        Created basic delete button to be displayed on table
+         */
+
+        /*
+        @author Sidharth Bajaj
+        @date dec 2
+        implemented delete command to table and its getting data from table
+        on click and then deleting the data once pressed.
+         */
+
+
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 

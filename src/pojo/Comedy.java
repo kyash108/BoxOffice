@@ -1,5 +1,11 @@
 package pojo;
 
+/*
+@author Sidharth Bajaj
+@date 19 nov
+Utilised pojo in the panes and tables
+*/
+
 public class Comedy {
     private int id;
     private String title;

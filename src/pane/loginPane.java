@@ -18,6 +18,12 @@ import scene.mainScene;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/*
+       @author Yash Kumar
+       @date 3 Dec
+       Coded Login page with taking user inputs and then proceeding with actual program
+       and matching the needed inputs.
+       */
 public class loginPane extends BorderPane {
     public loginPane(){
         Image image = null;

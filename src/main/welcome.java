@@ -5,6 +5,13 @@ import scene.loginScene;
 import scene.mainScene;
 
 public class welcome extends Application {
+    /*
+    @author Yash Kumar
+    @date Nov 5
+    Created the basic design format along with simplifying the project
+    utilizing the concept of panes and scenes
+     */
+
      public static Stage stage;
 
     @Override
