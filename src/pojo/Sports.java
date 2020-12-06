@@ -1,5 +1,11 @@
 package pojo;
 
+/**
+@author Yash Kumar
+@date 26 nov
+Utilised pojo in the panes and tables
+*/
+
 public class Sports {
     private int id;
     private String title;

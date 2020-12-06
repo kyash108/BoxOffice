@@ -1,5 +1,10 @@
 package database;
 
+/**
+@author Sidharth Bajaj
+@date 19 nov
+Created crud commands that would make table on the databases
+*/
 public class DBConst {
 
 

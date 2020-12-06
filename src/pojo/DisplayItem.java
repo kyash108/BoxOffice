@@ -1,5 +1,11 @@
 package pojo;
 
+/**
+@author Sidharth Bajaj
+@date 26 nov
+Utilised pojo in the panes and tables
+*/
+
 public class DisplayItem {
     private String id;
     private String title;

@@ -22,14 +22,33 @@ import java.io.FileNotFoundException;
 
 public class sportsPane extends HBox {
 
+    /**
+    @author Yash Kumar
+    @date Nov 5
+    Created Sports table page in javafx displaying the insert bars and tableview which is
+    getting data from the database and displaying it to the user.
+    */
+
     public sportsPane(){
+        /**
+        @author Yash Kumar
+        @date Nov 11
+        Created Vbox with gridpane.
+        Buttons and textfields are inserted in the gridpane.
+        On the right side - places tableview which is getting table.
+        */
+
         VBox vBox = new VBox();
-
-
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(0,25,25,25));
+
+        /**
+        @author Yash Kumar
+        @date 11 nov
+        Inserted image for utilizing the back button and also created the back button in photoshop.
+        */
 
         Image image = null;
         try {
@@ -46,6 +65,19 @@ public class sportsPane extends HBox {
         backButton.setMaxHeight(30);
         backButton.setMaxWidth(30);
         backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
+
+        /**
+        @author Yash Kumar
+        @date 11 nov
+        Labels for textfields for getting inputs from the user
+        */
+
+        /**
+        @author Sidharth Bajaj
+        @date 12 nov
+        Inserted image for utilizing the back button and also created the back button in photoshop.
+        Made png file as an image to shift to previous panes
+        */
 
 
         Label labelInput = new Label("Title");
@@ -78,6 +110,18 @@ public class sportsPane extends HBox {
         HBox hboxForButton = new HBox();
         Button insert = new Button("INSERT");
 
+        /**
+         @author Yash Kumar
+         @date 11 nov
+         created insert button for function
+        */
+
+        /**
+        @author Yash Kumar
+        @date 2 dec
+        insert button inserting data to database with proper datatypes
+        that are matching with table structure.
+         */
 
         insert.setOnAction(e-> {
             Sports sport = new Sports(
@@ -91,14 +135,6 @@ public class sportsPane extends HBox {
         });
 
 
-
-//        Button removeButton = new Button("Remove");
-//        removeButton.setOnAction(e->{
-//            DisplayItem item = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-//            itemTable.deleteItem(item.getId());
-//            refreshTable();
-//            StatsTab.getInstance().generateChart();
-//        });
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
@@ -114,6 +150,16 @@ public class sportsPane extends HBox {
         Label tableHead = new Label("Sports");
         tableHead.setFont(Font.font(27));
 
+        /**
+        @author Yash Kumar
+        @date 11 nov
+        created basic table
+
+        @author Yash Kumar
+        @date 2 dec
+        changed the tableView and made code for the data to be viewed
+        from database
+         */
 
         TableView tableView = new TableView();
 
@@ -163,6 +209,21 @@ public class sportsPane extends HBox {
         vBoxTable.setAlignment(Pos.TOP_CENTER);
 
         insert.setStyle("-fx-background-color: #cceb8b;");
+
+        /**
+        @author Yash Kumar
+        @date 11 nov
+        Created basic delete button to be displayed on table
+         */
+
+        /**
+        @author Sidharth Bajaj
+        @date dec 2
+        implemented delete command to table and its getting data from table
+        on click and then deleting the data once pressed.
+         */
+
+
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 

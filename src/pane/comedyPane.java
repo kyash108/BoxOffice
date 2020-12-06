@@ -24,13 +24,35 @@ import tables.sportsTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+    @author Sidharth Bajaj
+    @date Nov 5
+    Created comedy table page in javafx displaying the insert bars and tableview which is
+    getting data from the database and displaying it to the user.
+     */
+
 public class comedyPane extends HBox {
     public comedyPane(){
+        /**
+        @author Sidharth Bajaj
+        @date Nov 12
+        Created Vbox with gridpane.
+        Buttons and textfields are inserted in the gridpane.
+        On the right side - places tableview which is getting table.
+        */
         VBox vBox = new VBox();
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(0,25,25,25));
+
+        /**
+        @author Sidharth Bajaj
+        @date 12 nov
+        Inserted image for utilizing the back button and also created the back button in photoshop.
+        Made png file as an image to shift to previous panes
+        */
+
 
         Image image = null;
         try {
@@ -48,6 +70,11 @@ public class comedyPane extends HBox {
         backButton.setMaxWidth(30);
         backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
 
+        /**
+        @author Sidharth Bajaj
+        @date 12 nov
+        Labels for textfields for getting inputs from the user
+        */
 
         Label labelInput = new Label("Title");
         gridPane.add(labelInput,0,2);
@@ -79,7 +106,16 @@ public class comedyPane extends HBox {
         HBox hboxForButton = new HBox();
         Button insert = new Button("INSERT");
 
+/**
+        @author Sidharth Bajaj
+        @date 5 nov
+        created basic table
 
+        @author Sidharth Bajaj
+        @date 2 dec
+        changed the tableView and made code for the data to be viewed
+        from database
+         */
         insert.setOnAction(e-> {
             Comedy comedy = new Comedy(
                     (inputTitle.getText()),inputDirector.getText(),
@@ -91,6 +127,7 @@ public class comedyPane extends HBox {
         });
 
         insert.setStyle("-fx-background-color: #cceb8b;");
+
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
@@ -104,7 +141,16 @@ public class comedyPane extends HBox {
         VBox vBoxTable = new VBox();
         Label tableHead = new Label("Comedy");
         tableHead.setFont(Font.font(27));
+/**
+        @author Yash Kumar
+        @date 5 nov
+        created basic table
 
+        @author Sidharth Bajaj
+        @date 2 dec
+        changed the tableView and made code for the data to be viewed
+        from database
+         */
 
         TableView tableView = new TableView();
 
@@ -154,6 +200,20 @@ public class comedyPane extends HBox {
 
         vBoxTable.getChildren().addAll(tableHead,tableView);
         vBoxTable.setAlignment(Pos.TOP_CENTER);
+
+        /**
+        @author Sidharth Bajaj
+        @date 5 nov
+        Created basic delete button to be displayed on table
+         */
+
+        /**
+        @author Sidharth Bajaj
+        @date dec 2
+        implemented delete command to table and its getting data from table
+        on click and then deleting the data once pressed.
+         */
+
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 

@@ -17,6 +17,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+       @author Sidharth Bajaj
+       @date 3 Dec
+       Coded Chart Pane with adding manual values
+       */
 public class chartPane extends VBox {
 
     public chartPane()  {

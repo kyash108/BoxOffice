@@ -26,6 +26,12 @@ public class sciTable implements sciDao {
         }
     }
 
+    /**
+    @author Sidharth Bajaj
+    @date 26 nov
+    getting tables from the database after the table is created
+    */
+
 
     public ArrayList<Sci> getSci() {
         String query = "SELECT * FROM "+ DBConst.TABLE_SCI;
@@ -79,7 +85,11 @@ public class sciTable implements sciDao {
     public Sci getSci(String title) {
         return null;
     }
-
+    /**
+        @author Sidharth Bajaj
+        @date 26 nov
+        Created delete statement so that the selected/clicked record gets deleted.
+        */
 
     @Override
     public void deleteItem(int id) {
@@ -93,6 +103,11 @@ public class sciTable implements sciDao {
             e.printStackTrace();
         }
     }
+    /**
+    @author Sidharth Bajaj
+    @date 26 nov
+    Created create statement so that the table is created.
+    */
 
     public void createItem(Sci sci) {
         String query = "INSERT INTO " + DBConst.TABLE_SCI +
@@ -110,6 +125,12 @@ public class sciTable implements sciDao {
             e.printStackTrace();
         }
     }
+
+    /**
+    @author Sidharth Bajaj
+    @date 2 Dec
+    Created delete statement so that the selected/clicked record gets deleted.
+    */
     public static ArrayList<DisplayItem> getPrettyItems(){
         ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();
         String query = "SELECT * from scifi";

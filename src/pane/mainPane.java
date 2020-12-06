@@ -19,6 +19,13 @@ import tables.sciTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+       @author Yash Kumar
+       @date 5 Nov
+       Coded Login page with taking user inputs and then proceeding with actual program
+       and matching the needed inputs.
+       */
+
 public class mainPane extends BorderPane {
     public mainPane(){
 

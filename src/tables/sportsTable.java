@@ -26,6 +26,11 @@ public class sportsTable implements sportsDao {
         }
     }
 
+    /**
+    @author Yash Kumar
+    @date 26 nov
+    getting tables from the database after the table is created
+    */
 
     @Override
     public ArrayList<Sports> getSports() {
@@ -52,7 +57,11 @@ public class sportsTable implements sportsDao {
 
         return sport;
     }
-
+    /**
+        @author Yash Kumar
+        @date 26 nov
+        selecting table data from the database after the table is created
+        */
     @Override
     public Sports getSports(String title) {
         String query = "SELECT * FROM " + DBConst.SPORTS_COLUMN_TITLE + " WHERE " + DBConst.SPORTS_COLUMN_TITLE + " = " + title;
@@ -78,6 +87,11 @@ public class sportsTable implements sportsDao {
         return null;
     }
 
+    /**
+        @author Sidharth Bajaj
+        @date 2 Dec
+        Created delete statement so that the selected/clicked record gets deleted.
+        */
     @Override
     public void deleteItem(int id) {
         String query = "DELETE FROM " + DBConst.TABLE_SPORTS + " WHERE " +
@@ -90,7 +104,11 @@ public class sportsTable implements sportsDao {
             e.printStackTrace();
         }
     }
-
+    /**
+        @author Sidharth Bajaj
+        @date 26 nov
+        Created create statement so that the table is created.
+        */
     @Override
     public void createItem(Sports sports) {
         String query = "INSERT INTO " + DBConst.TABLE_SPORTS +
@@ -109,6 +127,11 @@ public class sportsTable implements sportsDao {
             e.printStackTrace();
         }
     }
+    /**
+    @author Sidharth Bajaj
+    @date 2 Dec
+    Created create statement so that the table is created.
+    */
 
     public static ArrayList<DisplayItem> getPrettyItems() {
         ArrayList<DisplayItem> items = new ArrayList<DisplayItem>();

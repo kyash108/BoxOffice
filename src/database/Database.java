@@ -2,6 +2,13 @@ package database;
 
 import java.sql.*;
 
+/**
+@author Sidharth Bajaj
+@date 19 nov
+Created and attached database to the program
+*/
+
+
 public class Database {
     public static Database instance = null;
     private Connection connection = null;
