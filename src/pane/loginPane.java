@@ -1,4 +1,5 @@
 package pane;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import main.welcome;
 import scene.loginScene;
 import scene.mainScene;
@@ -48,6 +50,11 @@ public class loginPane extends BorderPane {
         login.setPadding(new Insets(20));
         login.setMinWidth(80);
         login.setMaxHeight(35);
+        
+        final FadeTransition fadeOut = new FadeTransition(Duration.millis(100));
+        fadeOut.setNode(login);
+        fadeOut.setToValue(0.5);
+        login.setOnMouseExited(e -> fadeOut.playFromStart());
 
         login.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
