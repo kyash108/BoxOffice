@@ -25,9 +25,7 @@ import java.sql.Statement;
 public class chartPane extends VBox {
 
     public chartPane()  {
-
         VBox vBox = new VBox();
-
         Image image = null;
         try {
             image = new Image(new FileInputStream("src/images/backArrow.png"));
