@@ -3,6 +3,7 @@ package pane;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,15 +12,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import main.welcome;
+import main.Welcome;
 import pojo.DisplayItem;
 import pojo.Sci;
-import scene.chartScene;
-import scene.comedyScene;
-import scene.mainScene;
-import scene.sciScene;
-import tables.comedyTable;
-import tables.sciTable;
+import scene.ChartScene;
+import scene.MainScene;
+import scene.SciScene;
+import tables.SciTable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,8 +28,8 @@ import java.io.FileNotFoundException;
     Created Sports table page in javafx displaying the insert bars and tableview which is
     getting data from the database and displaying it to the user.
     */
-public class sciPane extends HBox {
-    public sciPane(){
+public class SciPane extends HBox {
+    public SciPane(){
 
         /**
         @author Yash Kumar
@@ -77,7 +76,7 @@ public class sciPane extends HBox {
         backButton.setStyle("-fx-background-color: #97d076;");
         backButton.setMaxHeight(30);
         backButton.setMaxWidth(30);
-        backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
+        backButton.setOnAction(e-> Welcome.stage.setScene(new MainScene()));
 
         /**
         @author Yash Kumar
@@ -132,15 +131,15 @@ public class sciPane extends HBox {
                     (inputTitle.getText()),inputDirector.getText(),
                     Integer.parseInt(inputReleaseDate.getText()),inputBudget.getText());
 
-            sciTable sciTable = new sciTable();
+            SciTable sciTable = new SciTable();
             sciTable.createItem(sci);
-            welcome.stage.setScene(new sciScene());
+            Welcome.stage.setScene(new SciScene());
         });
         insert.setStyle("-fx-background-color: #cceb8b;");
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
-        chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
+        chart.setOnAction(e-> Welcome.stage.setScene(new ChartScene()));
 
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
@@ -201,7 +200,7 @@ public class sciPane extends HBox {
         column5.setStyle("-fx-background-color: #cceb8b;");
         tableView.getColumns().add(column5);
 
-        tableView.getItems().addAll(sciTable.getPrettyItems());
+        tableView.getItems().addAll(SciTable.getPrettyItems());
 
         tableView.setMaxHeight(220);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -227,10 +226,14 @@ public class sciPane extends HBox {
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 
+        insert.setCursor(Cursor.HAND);
+        delete.setCursor(Cursor.HAND);
+        chart.setCursor(Cursor.HAND);
+
         delete.setOnAction(e->{
             DisplayItem sci = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-            sciTable.deleteItem(sci.getId());
-            welcome.stage.setScene(new sciScene());
+            SciTable.deleteItem(sci.getId());
+            Welcome.stage.setScene(new SciScene());
 
         });
 

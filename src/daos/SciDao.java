@@ -8,7 +8,7 @@ import java.util.ArrayList;
 Utilised pojo in the panes and tables
 */
 
-public interface sciDao{
+public interface SciDao {
     public ArrayList<Sci> getSci();
     public Sci getSci(String title);
     public void createItem(Sci sci);

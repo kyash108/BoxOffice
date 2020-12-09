@@ -3,6 +3,7 @@ package pane;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,15 +12,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import main.welcome;
+import main.Welcome;
 import pojo.Comedy;
 import pojo.DisplayItem;
-import scene.chartScene;
-import scene.comedyScene;
-import scene.mainScene;
-import scene.sportsScene;
-import tables.comedyTable;
-import tables.sportsTable;
+import scene.ChartScene;
+import scene.ComedyScene;
+import scene.MainScene;
+import tables.ComedyTable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,8 +30,8 @@ import java.io.FileNotFoundException;
     getting data from the database and displaying it to the user.
      */
 
-public class comedyPane extends HBox {
-    public comedyPane(){
+public class ComedyPane extends HBox {
+    public ComedyPane(){
         /**
         @author Sidharth Bajaj
         @date Nov 12
@@ -68,7 +67,7 @@ public class comedyPane extends HBox {
         backButton.setStyle("-fx-background-color: #97d076;");
         backButton.setMaxHeight(30);
         backButton.setMaxWidth(30);
-        backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
+        backButton.setOnAction(e-> Welcome.stage.setScene(new MainScene()));
 
         /**
         @author Sidharth Bajaj
@@ -121,9 +120,9 @@ public class comedyPane extends HBox {
                     (inputTitle.getText()),inputDirector.getText(),
                     Integer.parseInt(inputReleaseDate.getText()),inputBudget.getText());
 
-            comedyTable comedyTable = new comedyTable();
+            ComedyTable comedyTable = new ComedyTable();
             comedyTable.createItem(comedy);
-            welcome.stage.setScene(new comedyScene());
+            Welcome.stage.setScene(new ComedyScene());
         });
 
         insert.setStyle("-fx-background-color: #cceb8b;");
@@ -131,7 +130,7 @@ public class comedyPane extends HBox {
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
-        chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
+        chart.setOnAction(e-> Welcome.stage.setScene(new ChartScene()));
 
         hboxForButton.setSpacing(5);
         hboxForButton.setAlignment(Pos.CENTER);
@@ -191,7 +190,7 @@ public class comedyPane extends HBox {
         tableView.getColumns().add(column5);
 
 
-        tableView.getItems().addAll(comedyTable.getPrettyItems());
+        tableView.getItems().addAll(ComedyTable.getPrettyItems());
 
         tableView.setMaxHeight(220);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -217,10 +216,14 @@ public class comedyPane extends HBox {
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 
+        insert.setCursor(Cursor.HAND);
+        delete.setCursor(Cursor.HAND);
+        chart.setCursor(Cursor.HAND);
+
         delete.setOnAction(e->{
             DisplayItem comedy = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-            comedyTable.deleteItem(comedy.getId());
-            welcome.stage.setScene(new comedyScene());
+            ComedyTable.deleteItem(comedy.getId());
+            Welcome.stage.setScene(new ComedyScene());
 
         });
         hboxForButton.getChildren().addAll(insert,delete,chart);

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 Utilised pojo in the panes and tables
 */
 
-public interface sportsDao {
+public interface SportsDao {
     public ArrayList<Sports> getSports();
     public Sports getSports(String title);
     public void createItem(Sports sports);

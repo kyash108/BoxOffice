@@ -1,6 +1,6 @@
 package tables;
 
-import daos.comedyDao;
+import daos.ComedyDao;
 import database.DBConst;
 import database.Database;
 import pojo.Comedy;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 created tables and utilised crud statement in them
 */
 
-public class comedyTable implements comedyDao {
+public class ComedyTable implements ComedyDao {
 
     static Database db = Database.getInstance();
     ArrayList<Comedy> comedys;

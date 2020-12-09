@@ -1,5 +1,5 @@
 package tables;
-import daos.sportsDao;
+import daos.SportsDao;
 import database.DBConst;
 import database.Database;
 import pojo.DisplayItem;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class sportsTable implements sportsDao {
+public class SportsTable implements SportsDao {
 
     static Database db = Database.getInstance();
     ArrayList<Sports> sport;

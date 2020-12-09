@@ -1,6 +1,7 @@
 package pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,12 +11,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import main.welcome;
-import pojo.Sci;
-import scene.comedyScene;
-import scene.sciScene;
-import scene.sportsScene;
-import tables.sciTable;
+import main.Welcome;
+import scene.ComedyScene;
+import scene.SciScene;
+import scene.SportsScene;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -26,8 +26,8 @@ import java.io.FileNotFoundException;
        and matching the needed inputs.
        */
 
-public class mainPane extends BorderPane {
-    public mainPane(){
+public class MainPane extends BorderPane {
+    public MainPane(){
 
         Font font1=Font.font("Times", FontWeight.BOLD,
                 FontPosture.ITALIC,30);
@@ -59,15 +59,22 @@ public class mainPane extends BorderPane {
         Button sports = new Button("Sports-Centric");
         Button comedy = new Button("Comedy");
         Button sci = new Button("Sci-fi");
+
         sports.setPadding(new Insets(20));
         comedy.setPadding(new Insets(20));
         sci.setPadding(new Insets(20));
+
         comedy.setMinWidth(150);
         sci.setMinWidth(150);
         sports.setMinWidth(150);
-        comedy.setOnAction(e-> welcome.stage.setScene(new comedyScene()));
-        sports.setOnAction(e-> welcome.stage.setScene(new sportsScene()));
-        sci.setOnAction(e-> welcome.stage.setScene(new sciScene()));
+
+        comedy.setCursor(Cursor.CLOSED_HAND);
+        sports.setCursor(Cursor.CLOSED_HAND);
+        sci.setCursor(Cursor.CLOSED_HAND);
+
+        comedy.setOnAction(e-> Welcome.stage.setScene(new ComedyScene()));
+        sports.setOnAction(e-> Welcome.stage.setScene(new SportsScene()));
+        sci.setOnAction(e-> Welcome.stage.setScene(new SciScene()));
 
         HBox buttons= new HBox();
         buttons.getChildren().addAll(sports,comedy,sci);

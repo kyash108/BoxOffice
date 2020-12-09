@@ -1,10 +1,9 @@
 package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import scene.loginScene;
-import scene.mainScene;
+import scene.LoginScene;
 
-public class welcome extends Application {
+public class Welcome extends Application {
     /**
     @author Yash Kumar
     @date Nov 5
@@ -17,7 +16,7 @@ public class welcome extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage=primaryStage;
-        primaryStage.setScene(new loginScene());
+        primaryStage.setScene(new LoginScene());
         primaryStage.setTitle("Box Office");
         primaryStage.setResizable(false);
         primaryStage.show();

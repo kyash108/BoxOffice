@@ -7,7 +7,7 @@ import java.util.ArrayList;
 @date 26 nov
 Utilised pojo in the panes and tables
 */
-public interface comedyDao {
+public interface ComedyDao {
     public ArrayList<Comedy> getComedy();
     public Comedy getComedy(String title);
     public void createItem(Comedy comedy);

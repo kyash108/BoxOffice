@@ -1,5 +1,5 @@
 package tables;
-import daos.sciDao;
+import daos.SciDao;
 import database.DBConst;
 import database.Database;
 import pojo.DisplayItem;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class sciTable implements sciDao {
+public class SciTable implements SciDao {
 
     static Database db = Database.getInstance();
     ArrayList<Sci> scis;

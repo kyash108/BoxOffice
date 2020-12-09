@@ -2,6 +2,7 @@ package pane;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,17 +11,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import main.welcome;
+import main.Welcome;
 import pojo.Sports;
 import pojo.DisplayItem;
-import scene.chartScene;
-import scene.mainScene;
-import scene.sportsScene;
-import tables.sportsTable;
+import scene.ChartScene;
+import scene.MainScene;
+import scene.SportsScene;
+import tables.SportsTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class sportsPane extends HBox {
+public class SportsPane extends HBox {
 
     /**
     @author Yash Kumar
@@ -29,7 +30,7 @@ public class sportsPane extends HBox {
     getting data from the database and displaying it to the user.
     */
 
-    public sportsPane(){
+    public SportsPane(){
         /**
         @author Yash Kumar
         @date Nov 11
@@ -64,7 +65,7 @@ public class sportsPane extends HBox {
         backButton.setStyle("-fx-background-color: #97d076;");
         backButton.setMaxHeight(30);
         backButton.setMaxWidth(30);
-        backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
+        backButton.setOnAction(e-> Welcome.stage.setScene(new MainScene()));
 
         /**
         @author Yash Kumar
@@ -129,16 +130,16 @@ public class sportsPane extends HBox {
                     (inputTitle.getText()),inputDirector.getText(),
                     Integer.parseInt(inputReleaseDate.getText()),inputBudget.getText());
 
-            sportsTable sportsTable = new sportsTable();
+            SportsTable sportsTable = new SportsTable();
             sportsTable.createItem(sport);
-            welcome.stage.setScene(new sportsScene());
+            Welcome.stage.setScene(new SportsScene());
         });
 
 
 
         Button chart = new Button("CHART");
         chart.setStyle("-fx-background-color: #cceb8b;");
-        chart.setOnAction(e-> welcome.stage.setScene(new chartScene()));
+        chart.setOnAction(e-> Welcome.stage.setScene(new ChartScene()));
 
 
         hboxForButton.setSpacing(5);
@@ -199,7 +200,7 @@ public class sportsPane extends HBox {
                 e -> new SimpleStringProperty(e.getValue().getBudget()));
         column5.setStyle("-fx-background-color: #cceb8b;");
         tableView.getColumns().add(column5);
-        tableView.getItems().addAll(sportsTable.getPrettyItems());
+        tableView.getItems().addAll(SportsTable.getPrettyItems());
 
         tableView.setMaxHeight(220);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -227,10 +228,14 @@ public class sportsPane extends HBox {
         Button delete = new Button("DELETE");
         delete.setStyle("-fx-background-color: #cceb8b;");
 
+        insert.setCursor(Cursor.HAND);
+        delete.setCursor(Cursor.HAND);
+        chart.setCursor(Cursor.HAND);
+
         delete.setOnAction(e->{
             DisplayItem sports = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-            sportsTable.deleteItem(sports.getId());
-            welcome.stage.setScene(new sportsScene());
+            SportsTable.deleteItem(sports.getId());
+            Welcome.stage.setScene(new SportsScene());
 
         });
         hboxForButton.getChildren().addAll(insert,delete,chart);

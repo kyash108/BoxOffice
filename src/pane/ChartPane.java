@@ -1,5 +1,4 @@
 package pane;
-import database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -8,23 +7,23 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.chart.*;
-import main.welcome;
-import scene.mainScene;
+import main.Welcome;
+import scene.MainScene;
+import tables.ComedyTable;
+import tables.SciTable;
+import tables.SportsTable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
        @author Sidharth Bajaj
        @date 3 Dec
        Coded Chart Pane with adding manual values
        */
-public class chartPane extends VBox {
+public class ChartPane extends VBox {
 
-    public chartPane()  {
+    public ChartPane()  {
         VBox vBox = new VBox();
         Image image = null;
         try {
@@ -40,13 +39,22 @@ public class chartPane extends VBox {
         backButton.setStyle("-fx-background-color: #97d076;");
         backButton.setMaxHeight(30);
         backButton.setMaxWidth(30);
-        backButton.setOnAction(e-> welcome.stage.setScene(new mainScene()));
+        backButton.setOnAction(e-> Welcome.stage.setScene(new MainScene()));
+
+        ComedyTable comedyTable = new ComedyTable();
+        int comedyMovies = comedyTable.getComedy().size();
+
+        SciTable sciTable = new SciTable();
+        int sciMovies = sciTable.getSci().size();
+
+        SportsTable sportsTable = new SportsTable();
+        int sportsMovies = sportsTable.getSports().size();
 
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
-                        new PieChart.Data("Sports", 5),
-                        new PieChart.Data("Comedy", 4),
-                        new PieChart.Data("Sci-fi", 7));
+                        new PieChart.Data("Sports", sportsMovies),
+                        new PieChart.Data("Comedy", comedyMovies),
+                        new PieChart.Data("Sci-fi", sciMovies));
         final PieChart chart = new PieChart(pieChartData);
         chart.setTitle("Movies");
 

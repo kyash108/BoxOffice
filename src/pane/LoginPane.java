@@ -13,9 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
-import main.welcome;
-import scene.loginScene;
-import scene.mainScene;
+import main.Welcome;
+import scene.LoginScene;
+import scene.MainScene;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,8 +26,8 @@ import java.io.FileNotFoundException;
        Coded Login page with taking user inputs and then proceeding with actual program
        and matching the needed inputs.
        */
-public class loginPane extends BorderPane {
-    public loginPane(){
+public class LoginPane extends BorderPane {
+    public LoginPane(){
         Image image = null;
         try {
             image = new Image(new FileInputStream("src/name.png"));
@@ -65,9 +65,9 @@ public class loginPane extends BorderPane {
         login.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 if(username.getText().equals("username") && password.getText().equals("password")){
-                    welcome.stage.setScene(new mainScene());
+                    Welcome.stage.setScene(new MainScene());
                 }else{
-                welcome.stage.setScene(new loginScene());
+                Welcome.stage.setScene(new LoginScene());
             }
             }});
         login.setStyle("-fx-background-color: #cceb8b;");
