@@ -21,4 +21,6 @@ public class Welcome extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+    // commented here
 }
