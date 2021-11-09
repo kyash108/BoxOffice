@@ -26,6 +26,8 @@ import java.io.FileNotFoundException;
        Coded Login page with taking user inputs and then proceeding with actual program
        and matching the needed inputs.
        */
+
+    //    commented for training presentation
 public class LoginPane extends BorderPane {
     public LoginPane(){
         Image image = null;
